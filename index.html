@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="src/css/index.css">
 
     <!-- scripts -->
-    <script src="src/js/index.js"></script>
+    <script defer src="src/js/index.js"></script>
     
     <!-- libs -->
     <script src="https://kit.fontawesome.com/4dff4a55ad.js" crossorigin="anonymous"></script>
@@ -24,8 +24,8 @@
     <header id="header">
         <!-- elmnts -->
         <div class="elmnts">
-            <h1 class="title">midgard</h1>
-            <p class="tag">home of the humans</p>
+            <h1 class="title">rntlpay</h1>
+            <p class="tag">track your expenses</p>
         </div>
         <!-- elmnts -->
     </header>
@@ -50,25 +50,69 @@
     <!-- application -->
     <section id="application">
         <!-- elmnts -->
-        <div class="elmnts">
+        <!-- <div class="elmnts">
             <h5 class="title">rntlpay</h5>
             <p class="tag">web application prototypes</p>
-        </div>
+        </div> -->
         <div class="elmnts">
             <!-- form -->
             <form action="" class="form" id="form">
                 <!-- form : elmnts -->
                 <div class="elmnts">
-                    <h3 class="tag">track rental payments</h3>
-                    <label for="rent">rent due date</label>
-                    <input type="text" name="rent" id="rent">
-                    <label for="price">price due</label>
-                    <input type="text" name="price" id="price">
-                    <label for="bills">bills due</label>
-                    <input type="number" name="bills" id="bills">
-                    <label for="shop">groceries</label>
-                    <input type="number" name="shop" id="shop">
-                    <button class="btn__submit"><i class="fas fa-money-bill-alt"></i><a href="#output">track bills</a></button>
+                    <h3 class="tag">app prototype</h3>
+
+                    <!-- <h4>payment type</h4>
+                    <div class="radios">
+                        <label for="paymentWeek">week</label>
+                        <input type="radio" name="paymentWeek" id="paymentWeek" value="week">
+                    </div>
+                    <div class="radios">
+                        <label for="paymentFortnight">fornight</label>
+                        <input type="radio" name="paymentFortnight" id="paymentFortnight">
+                    </div>
+                    <div class="radios">
+                        <label for="paymentMonth">month</label>
+                        <input type="radio" name="paymentMonth" id="paymentMonth">
+                    </div> -->
+                    
+                    
+                    <!-- app -->
+
+                    <!-- rent date -->
+                    <label for="rent">payment type</label>
+                    <select name="rent" id="rent" placeholder="rent type">
+                        <option class="options" value=""></option>
+                        <option class="options" value="week">week</option>
+                        <option class="options" value="fortnight">fortnight</option>
+                        <option class="options" value="month">month</option>
+                    </select>
+                    <!-- <input type="date" name="rent" id="rent"> -->
+                    <!-- date error -->
+                    <span id="error_rent" class="errors"></span>
+                    
+                    <!-- rent cost -->
+                    <label for="cost">price per week</label>
+                    <input type="text" name="cost" id="cost" placeholder="$">
+                    <!-- cost error -->
+                    <span id="error_cost" class="errors"></span>
+                    
+                    <!-- rent bill -->
+                    <label for="bill">utilitiy bills</label>
+                    <input type="number" name="bill" id="bill" placeholder="$">
+                    <!-- bill error -->
+                    <span id="error_bill" class="errors"></span>
+                    
+                    <!-- rent shop -->
+                    <label for="shop">groceries & essentials</label>
+                    <input type="number" name="shop" id="shop" placeholder="$">
+                    <!-- error shop -->
+                    <span id="error_shop" class="errors"></span>
+                    
+                    <button type="submit" id="submit">track</button>
+
+                    <!-- app -->
+
+                    <!-- <button class="btn__submit" id="track"><i class="fas fa-money-bill-alt"></i><a href="#output">track bills</a></button> -->
                 </div>
                 <!-- form : elmnts -->
             </form>
@@ -77,6 +121,52 @@
         <!-- elmnts -->
     </section>
     <!-- application -->
+
+    <!-- output -->
+    <section id="output">
+        
+        <!-- elmnts -->
+        <div class="elmnts">
+
+            <ul id="calculations">
+
+                <li>
+                    <!-- panel title -->
+                    <h4>rent cost</h4>
+                    <!-- calculated total -->
+                    <p>$ <span class="rentTotal"></span></p>
+                    <!-- payment type -->
+                    <p>Every <span class="rentType"></span></p>
+                </li>
+                <li>
+                    <!-- panel title -->
+                    <h4>utilites cost</h4>
+                    <!-- calculated total -->
+                    <p>$ <span class="utilTotal"></span></p>
+                </li>
+                <li>
+                    <!-- panel title -->
+                    <h4>groceries cost</h4>
+                    <!-- calculated total -->
+                    <p>$ <span class="shopTotal"></span></p>
+                </li>
+                <li>
+                    <!-- panel title -->
+                    <h4>total spending</h4>
+                    <!-- calculated total -->
+                    <p>$ <span class="calcTotal"></span></p>
+                </li>
+
+                
+                
+
+            </ul>
+
+        </div>
+        <!-- elmnts -->
+
+    </section>
+    <!-- output -->
 
     <!-- prototype -->
     <section id="prototype">

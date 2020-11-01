@@ -7,7 +7,7 @@
 /* global : variables */
 :root {
     /* background */
-    --bk-color:  lightcoral;
+    --bk-color:  rgb(107, 10, 116);
     --bk-white:  rgba(255,255,255,0.8);
     --bk-grey: rgba(175, 172, 172, 0.5);
     --bk-trans: rgba(0,0,0,0.5);
@@ -56,6 +56,8 @@ body {
     font-family: var(--font-main);
  
 }
+
+
 html {
     /* scroll-behavior: smooth; */
     scroll-snap-type: mandatory;
@@ -63,9 +65,11 @@ html {
     overflow-y: scroll;
     position: relative;
 }
+/* attach smooth scroll / scroll snap to get section */
 #header,
 #about,
 #application,
+#output,
 #prototype,
 #footer {
     scroll-snap-align: start;
@@ -234,6 +238,21 @@ section form input:focus {
     transition: 0.5s all ease-out;
     text-align: center;
 }
+section form select {
+    font-size: var(--text-sm);
+    height: 50px;
+    width: 90%;
+    background: transparent;
+    border: 2px solid var(--main);
+    color: var(--main);
+    text-transform: capitalize;
+    margin-left: 10px;
+    padding-left: 10px;
+    transition: 0.5s all ease-in;
+}
+section form select>option {
+    text-transform: capitalize;
+}
 section form button {
     background: var(--bk-color);
     border: 2px solid var(--main);
@@ -248,6 +267,24 @@ section form button {
 section form button a,
 section form button i {
     color: var(--alt);
+}
+
+form select {
+
+}
+
+form .radios {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+    border: var(--debugging);
+}
+form .errors {
+    color: red;
+    text-decoration: underline;
+    text-align: center;
+    padding-top: var(--sm);
+    width: 100%;
 }
 
 /* section : prototype [ list ] */
