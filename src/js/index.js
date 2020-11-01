@@ -133,54 +133,56 @@ resetErrors = () => {
 */
 calculateData = () => {
 
-    // html select > options list index
+    // week variable, assign to 4 [ 4 weeks = 1 month ]
+    let week = 4;
+    
+    // rent calc variable, value changes on select option type
+    let rentCalc;
+
+    let rentFreq;
+    
+    // rent options variable, gets select options value
     let rentOptions = rent.options[document.getElementById('rent').selectedIndex].value;
 
     // test
     console.log(rentOptions);
-
-    // rent calc variable, value changes on select option type
-    let rentCalc;
-
-    // rent type variable, assign selected option to output
-    let rentType = document.querySelector('.rentType');
+    
     /*  
         validate & calculate rent payment types
         get cost value and multiply by payment type
         
     */
-    
-    // validate select option [ week ]
+
+   // validate select option [ week ]
     if (rentOptions == 'week') {
 
-        // assign week to 4
-        let week = 4;
-        
+        // assign rent frequency to 4 [ week ]
+        rentFreq = 4;
+
         // times the rent cost by 4 [ 4 weeks = 1 month ]
         rentCalc = cost.value * week;
-        
-        rentType.innerHTML = 'week';
         
         // test
         console.log(rentCalc);
     }
     else if (rentOptions == 'fortnight') {
-        // assign fort to 2
-        let fort = 2;
+        
+        // assign rent frequency to 2 [ fortnight ]
+        rentFreq = 2;
 
         // times the rent cost by 2 [ 2 fortnights = 1 month ]
-        rentCalc = cost.value * fort;
+        rentCalc = cost.value * week;
 
         // test
         console.log(rentCalc);
     }
     else if (rentOptions == 'month') {
 
-        // assign mont to 1
-        let mont = 1;
+        // assign rent frequency to 1 [ month ]
+        rentFreq = 1;
 
         // times the rent cost by 1 [ 1 month = 1 month ]
-        rentCalc = cost.value * mont;
+        rentCalc = cost.value * week;
 
         // test
         console.log(rentCalc);
@@ -192,13 +194,13 @@ calculateData = () => {
         
     }
 
-    // unordered list element selector
-    let calculations = document.querySelector('#calculations');
-    
     // value type-cost variable assignments
     let rentCost = rentCalc;
     let utilCost = bill.value;
     let shopCost = shop.value;
+
+    // test
+    console.log(utilCost + shopCost + rentCost);
 
     // while first character of input [ bill ] is equal to zero [ 0 ]
     while(utilCost.indexOf(0) == '0') {
@@ -211,8 +213,6 @@ calculateData = () => {
     utilCost = parseInt(bill.value);
     shopCost = parseInt(shop.value);
     
-    // test
-    console.log(utilCost + shopCost + rentCost);
 
     // add together the values of rent cost, util cost & shop cost
     let totalCost = rentCost + utilCost + shopCost;
@@ -225,12 +225,17 @@ calculateData = () => {
     let utilTotal = document.querySelector('.utilTotal');
     let shopTotal = document.querySelector('.shopTotal');
     let calcTotal = document.querySelector('.calcTotal');
+    let freqTotal = document.querySelector('.freqTotal');
+
+    // rent type title selector
+    let rentType = document.querySelector('.rentType');
+
+    // assign rent type to rent options value
+    rentType.innerHTML = rentOptions;
     
     // assign rent total to rent calc value
     rentTotal.innerHTML = rentCalc;
-    // assign rent type to rent options value
-    rentType.innerHTML = rentOptions;
-
+    
     // assign util total to util cost value
     utilTotal.innerHTML = utilCost;
 
@@ -239,6 +244,12 @@ calculateData = () => {
 
     // calculate total spending and assign value to calc total
     calcTotal.innerHTML = totalCost;
+    
+    // divide rent cost by rent frequency variable
+    freqTotal.innerHTML = rentCost / rentFreq;
+
+    let output = document.querySelector('#output');
+    output.scrollIntoView();
     
     // test
     console.log('function : calculateData initiated');

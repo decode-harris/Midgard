@@ -269,9 +269,7 @@ section form button i {
     color: var(--alt);
 }
 
-form select {
 
-}
 
 form .radios {
     display: flex;
@@ -342,6 +340,16 @@ section ul .tag {
         grid-template-columns: repeat(12, 1fr);       
     }
     
+    .container {
+        display: flex;
+    }
+    .container #application,
+    .container #output {
+        /* border: var(--wireframe); */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     /* semantic props */
     #header .elmnts:nth-child(1) {
         grid-column: span 12;
@@ -396,13 +404,36 @@ section ul .tag {
     #about button {
         max-width: 300px;
     }
-
+    #output {
+        padding: var(--sm);
+    }
+    #output .elmnts {
+        padding: var(--sm);
+    }
+    
     /* section : application */
     section form {
         background: var(--bk-white);
         color: var(--main);
         max-width: 500px;
         max-height: 600px;
+    }
+    /* section : output */
+    section ul {
+        padding: var(--md);
+    }
+    section li {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    section li h4 {
+        font-size: 1.1rem;
+        text-decoration: underline;
+    }
+    section li p {
+        font-size: 2rem;
+        letter-spacing: 2px;
     }
 
 }

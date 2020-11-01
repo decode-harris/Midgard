@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RNTLPAY | Rental Calculator | Application</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="src/css/index.css">
+
+    <!-- scripts -->
+    <script defer src="src/js/index.js"></script>
+    
+    <!-- libs -->
+    <script src="https://kit.fontawesome.com/4dff4a55ad.js" crossorigin="anonymous"></script>
+
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dosis&amp;family=Josefin+Sans&amp;display=swap" rel="stylesheet">
+
+</head>
+<body>
+    
+    <!-- header -->
+    <header id="header">
+        <!-- elmnts -->
+        <div class="elmnts">
+            <h1 class="title">rntlpay</h1>
+            <p class="tag">track your expenses</p>
+        </div>
+        <!-- elmnts -->
+    </header>
+    <!-- header -->
+
+    <div class="container">
+    <!-- application -->
+    <section id="application">
+        <!-- elmnts -->
+        <!-- <div class="elmnts">
+            <h5 class="title">rntlpay</h5>
+            <p class="tag">web application prototypes</p>
+        </div> -->
+        <div class="elmnts">
+            <!-- form -->
+            <form action="" class="form" id="form">
+                <!-- form : elmnts -->
+                <div class="elmnts">
+                    <!-- form title -->
+                    <h3 class="title">app prototype</h3>
+
+                    <!-- rent date -->
+                    <label for="rent">payment type</label>
+                    <select name="rent" id="rent" placeholder="rent type">
+                        <option class="options" value=""></option>
+                        <option class="options" value="week">week</option>
+                        <option class="options" value="fortnight">fortnight</option>
+                        <option class="options" value="month">month</option>
+                    </select>
+                    <!-- <input type="date" name="rent" id="rent"> -->
+                    <!-- date error -->
+                    <span id="error_rent" class="errors"></span>
+                    
+                    <!-- rent cost -->
+                    <label for="cost">price per week</label>
+                    <input type="text" name="cost" id="cost" placeholder="$">
+                    <!-- cost error -->
+                    <span id="error_cost" class="errors"></span>
+                    
+                    <!-- rent bill -->
+                    <label for="bill">utilitiy bills</label>
+                    <input type="number" name="bill" id="bill" placeholder="$">
+                    <!-- bill error -->
+                    <span id="error_bill" class="errors"></span>
+                    
+                    <!-- rent shop -->
+                    <label for="shop">groceries & essentials</label>
+                    <input type="number" name="shop" id="shop" placeholder="$">
+                    <!-- error shop -->
+                    <span id="error_shop" class="errors"></span>
+                    
+                    <button type="submit" id="submit">track</button>
+
+                    <!-- app -->
+
+                    <!-- <button class="btn__submit" id="track"><i class="fas fa-money-bill-alt"></i><a href="#output">track bills</a></button> -->
+                </div>
+                <!-- form : elmnts -->
+            </form>
+            <!-- form -->
+        </div>
+        <!-- elmnts -->
+    </section>
+    <!-- application -->
+
+    <!-- output -->
+    <section id="output">
+        
+        <!-- elmnts -->
+        <div class="elmnts">
+            <!-- list title -->
+            <h3 class="title">list prototype</h3>
+            <!-- output list element -->
+            <ul>
+                
+                <li>
+                    <!-- calculated rent [ month ] -->
+                    <h4>monthly rent</h4>
+                    <!-- calculated total -->
+                    <p>$ <span class="rentTotal"></span></p>
+                </li>
+                <li>
+                    <!-- calculated payment [ type ] -->
+                    <h4><span class="rentType"></span> amount</h4>
+                    <!-- calculated total -->
+                    <p>$ <span class="freqTotal"></span></p>
+                </li>
+                <li>
+                    <!-- calculated cost [ bills ] -->
+                    <h4>utilites cost</h4>
+                    <!-- calculated total -->
+                    <p>$ <span class="utilTotal"></span></p>
+                </li>
+                <li>
+                    <!-- calculated shop [ shop] -->
+                    <h4>groceries cost</h4>
+                    <!-- calculated total -->
+                    <p>$ <span class="shopTotal"></span></p>
+                </li>
+                <li>
+                    <!-- calculated total -->
+                    <h4>total spending</h4>
+                    <!-- calculated total -->
+                    <p>$ <span class="calcTotal"></span></p>
+                </li>
+                <li>
+                    <!-- calculated total -->
+                    <h4>savings</h4>
+                    <!-- calculated total -->
+                    <p>$ <span class="saveTotal"></span></p>
+                </li>
+                
+            </ul>
+
+        </div>
+        <!-- elmnts -->
+
+    </section>
+    <!-- output -->
+
+    </div>
+    <!-- container -->
+
+    <!-- footer -->
+    <footer id="footer">
+        <div class="elmnts">
+            <p class="tag">web application prototypes</p>
+        </div>
+        <div class="elmnts">
+            <p class="tag">find out more</p>
+            <p class="text">view all nine realms live sites & repositories</p>
+            <button><a href="#"><i class="fab fa-github-square"></i>github</a></button>
+        </div>
+        <div class="elmnts">
+            <h5 class="title">rntlpay</h5>
+            <p class="tag">developed by christopher harris</p>
+            <p class="text">thank you for visiting this page</p>
+        </div>
+    </footer>
+    <!-- footer -->
+
+
+
+</body>
+</html>
