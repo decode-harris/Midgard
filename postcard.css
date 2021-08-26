@@ -1,0 +1,110 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* 
+    section [ postcard ] component
+    
+    Contains 
+        1. Section [ postcard ]
+        2. Postcard [ face ]
+            - Face [ Face-Front + Face-Back ]
+        3. H3 [ Title Element ]
+        4. Text [ Text Element ]
+*/
+.postcard {
+    height: 250px;
+    width: 300px;
+    padding: 2%;
+    background-color: transparent;
+    perspective: 1000px; /* remove this attribute to disable #D effects */
+
+    /* dev */
+    border: 2px solid darkblue;
+}
+/* section postcard [ face ] : needed to position front & back elements */
+.postcard .face {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+
+    border-radius: 8px;
+    /* dev */
+    border: 2px solid darkblue;
+}
+.postcard:hover .face {
+    transform: rotateY(180deg); /* assign a horizontal flip when postcard element is hovered over */
+}
+.face-front, .face-back {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+
+    border-radius: 8px;
+}
+.face-front h3 {
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+    display: flex;
+    text-align: end;
+    text-decoration: underline;
+    font-size: 1.4rem;
+    text-transform: capitalize;
+    
+    /* border: 2px solid #FFF; */
+}
+
+.face-front {
+    background-image: url(amsterdam.jpeg);
+    background-position: center;
+    background-size: cover;
+
+    color: #FFF;
+}
+.face-front .overlay {
+    height: 100%;
+    width: 100%;
+    background: rgba(114, 114, 114, 0.432);
+}
+.face-back {
+    background: rgb(114, 114, 114);
+    color: #FFF;
+    transform: rotateY(180deg);
+}
+.face-back p {
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    min-height: 50px;
+    font-size: 1.2rem;
+    padding-left: 10px;
+    /* border: 1px solid #FFF; */
+}
+
+#note {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100px;
+    padding-left: 10px;
+}
+#note .line {
+    background-color: #FFF;
+    height: 1px;
+    width: 60%;
+    margin-top: 15px;
+}
