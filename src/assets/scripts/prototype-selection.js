@@ -18,3 +18,18 @@ selectionButton.addEventListener('click', (e)=> {
     }, 700);
 
 });
+
+// remove all preview postcard face-fronts from application (resources)
+removeAllFaceFronts = () => {
+
+    // select the previous uploaded postcard elements
+    let postcard1 = uploading.querySelector('.front');
+    let postcard2 = placement.querySelector('.front');
+
+    // set both of the elements background image value to an empty string
+    postcard1.style.backgroundImage = '';
+    postcard2.style.backgroundImage = '';
+
+    // test
+    console.log('removed postcard background image');
+}

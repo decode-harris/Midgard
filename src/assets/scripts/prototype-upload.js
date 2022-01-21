@@ -32,11 +32,6 @@
 
 */
 
-// select the uploading component container
-const uploading = document.querySelector('#uploading');
-const preview = document.querySelector('#preview');
-const placement = document.querySelector('#placement');
-
 // select the image upload HTML form element
 const upload_image = document.querySelector('#upload-image');
 
@@ -64,17 +59,26 @@ upload_image.addEventListener('change', function() {
             apply the results data [ reader result ] to the uploading
             container postcard element as a background image
         */
-        uploading.querySelector('.postcard').style.backgroundImage = `url(${ uploadedImage })`;
+        uploading.querySelector('.front').style.backgroundImage = `url(${ uploadedImage })`;
+
+        /*
+            apply the results data [ reader result ] to the heading
+            container postcard element as a background image
+        */
+        heading.querySelector('.front').style.backgroundImage = `url(${ uploadedImage })`;
+
+        /*
+            apply the results data [ reader result ] to the placement
+            container postcard face (front) element as a background image
+        */
+       placement.querySelector('.front').style.backgroundImage = `url(${ uploadedImage })`;
 
         /*
             apply the results data [ reader result ] to the preview
             container postcard face (front) element as a background image
         */
         preview.querySelector('.front').style.backgroundImage = `url(${ uploadedImage })`;
-
-
-        placement.querySelector('.front').style.backgroundImage = `url(${ uploadedImage })`;
-
+    
     });
 
     // obtain the data as an data URL value for the uploaded file
@@ -102,11 +106,11 @@ upload_image.addEventListener('change', function() {
 
 });
 
-// select the [ upload-button ] element
-const upload_button = document.querySelector('#upload-button');
+// select the [ image-button ]
+const imageButton = document.querySelector('#image-button');
 
 // add a click event to the [ upload-button ]
-upload_button.addEventListener('click', ()=> {
+imageButton.addEventListener('click', ()=> {
 
     // select the current postcard component inside the uploading container
     let currentPostcard = document.querySelector('#uploading .postcard');
@@ -116,17 +120,23 @@ upload_button.addEventListener('click', ()=> {
 
         // set a 1 ( one ) second time-out
         setTimeout(() => {
-            // on the inner HTML of the upload button element
-            upload_button.innerHTML = 're-upload photo';    
+            // on the inner HTML of the image button element
+            imageButton.innerHTML = 're-upload';
+
+            // select the button container from the [ uploading ] container element
+            let buttonContainer = uploading.querySelector('.buttons');
+            buttonContainer.style.flexDirection = 'row-reverse';
+            // append the [ image-button ] to the button container
+            buttonContainer.appendChild(imageButton);
 
             // also display the confirm button to navigation to the next application state
-            confirmButton.style.display = 'block';
+            uploadButton.style.display = 'block';
         }, 1000);
     
     }
     else {
         // revert the upload button innerHTML back to default
-        upload_button.innerHTML = 'upload photo';
+        imageButton.innerHTML = 'upload';
     }
     
     // // validate if the nofile is visible

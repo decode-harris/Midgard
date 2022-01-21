@@ -1,16 +1,16 @@
 // select the [ card-preview ] button
-const cardPreview = document.querySelector('#preview-button');
+const previewButton = document.querySelector('#preview-button');
 
-// select both of the card faces
-let faceFront = document.querySelector('.front');
-let faceBack = document.querySelector('.back');
+// select both of the card faces inside the preview container element
+let faceFront = preview.querySelector('.front');
+let faceBack = preview.querySelector('.back');
 
 // set the default transform properties for both card faces
 faceFront.style.transform = 'perspective(770px) rotateY(0deg)';
 faceBack.style.transform = 'perspective(770px) rotateY(180deg)';
 
 // attach a click event to the [ card-preview ] button
-cardPreview.addEventListener('click', ()=> {
+previewButton.addEventListener('click', ()=> {
 
     // 1. apply rotation animation styles to card
     // 2. revert rotation animation styles on card

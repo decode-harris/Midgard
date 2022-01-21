@@ -10,6 +10,24 @@
 
 */
 
+/* select the specific container element via ID
+    state [0] = Startup : Application Welcome Screen
+    state [1] Uploading : File Image Upload Module
+    state [2] Heading : User Title Selection
+    state [3] Placement : User Title Placement
+    state [4] Editing : User Memo + Recipient Data
+    state [5] Preview : 3D Digital Postcard Preview
+
+    state [6] Sharing : Social Media Sharing [ Coming Soon ]
+
+*/
+const startup = document.querySelector('#startup');
+const uploading = document.querySelector('#uploading');
+const heading = document.querySelector('#heading');
+const placement = document.querySelector('#placement');
+const editing = document.querySelector('#editing');
+const preview = document.querySelector('#preview');
+
 // select all container elements inside the application
 let container = document.querySelectorAll('.container');
 // iterate through all container elements
@@ -31,19 +49,25 @@ startupButton.addEventListener('click', ()=> {
         // remove all container elements from view
         container[i].style.display = 'none';
 
-        // display the first container element [ uploading ]
+        // display the next state container [ State-Transition : Startup ==> Uploading ]
         container[1].style.display = 'flex';
     }
 });
 
-// select the [ confirm-button ]
-const confirmButton = document.querySelector('#confirm-button');
-confirmButton.style.display = 'none';
+/*
+    refer to [ prototype-upload.js ] for file upload functionality
+    and validation methods ( uploading container ).
+*/
+
+// select the [ upload-button ]
+const uploadButton = document.querySelector('#upload-button');
+// remove the [ upload-button ] from the application view
+uploadButton.style.display = 'none';
 // add a click event to the button
-confirmButton.addEventListener('click', ()=> {
+uploadButton.addEventListener('click', ()=> {
 
     // select the current postcard element
-    let postcard = document.querySelector('.postcard');
+    let postcard = uploading.querySelector('.postcard .front');
 
     // validate if a photo image has been uploaded
     if (postcard.style.backgroundImage == '' || postcard.style.backgroundImage == null) {
@@ -55,7 +79,6 @@ confirmButton.addEventListener('click', ()=> {
             return after this validation is complete,
             do not run any part of this function until
             validation has passed.
-
         */
         return
     }
@@ -68,7 +91,7 @@ confirmButton.addEventListener('click', ()=> {
         // remove all container elements from view
         container[i].style.display = 'none';
 
-        // display the first container element [ editing ]
+        // display the next state container [ state transition : Uploading ==> Heading ]
         container[2].style.display = 'flex';
     }
 
@@ -101,11 +124,9 @@ titleButton.addEventListener('click', (e)=> {
         // remove all container elements from view
         container[i].style.display = 'none';
 
-        // display the first container element [ placement ]
+        // display the next state container [ state transition : Heading ==>  Placement ]
         container[3].style.display = 'flex';
     }
-
-    
 
 });
 
@@ -123,11 +144,22 @@ placementButton.addEventListener('click', ()=> {
         // remove all container elements from view
         container[i].style.display = 'none';
 
-        // display the first container element [ preview ]
+        // display the next state container [ state transition : Placement ==>  Editing ]
         container[4].style.display = 'flex';
     }
 
+    // set focus to the textarea element
+    memo.focus();
+
 });
+
+// select the [ editing-button ]
+const editingButton = document.querySelector('#editing-button');
+
+// add a click event to the button
+editing.addEventListener('click', ()=> {
+
+})
 
 // select the [ finalize-button ]
 const finalizeButton = document.querySelector('#finalize-button');
@@ -140,35 +172,8 @@ finalizeButton.addEventListener('click', ()=> {
         // remove all container elements from view
         container[i].style.display = 'none';
 
-        // display the first container element [ preview ]
-        container[4].style.display = 'flex';
+        // display the next state container [ state transition : Editing ==>  Preview ]
+        container[5].style.display = 'flex';
     }
-
 });
 
-// select & attach an event listener to the [ message-button ]
-const messageButton = document.querySelector('#message-button');
-// click event [ message-button ]
-messageButton.addEventListener('click', ()=> {
-
-    let address2 = document.querySelector('#address2');
-    if (address2.value == '' || address2.value == null) {
-        address2.style.display = 'none';
-    }
-
-    // select the [ editing section ] element
-    const editingSection = document.querySelector('#editing');
-
-    // select the card component inside the editing section container
-    let card = editingSection.querySelector('.postcard');
-
-    // set the class name of the card to [ card-complete ]
-    card.className += ' card-complete';
-
-    // remove the message button from view
-    messageButton.style.display = 'none';
-
-    finalizeButton.style.display = 'block';
-
-
-});
