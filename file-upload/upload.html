@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload [ Component ]</title>
+
+    <!-- CSS : File Upload -->
+    <link rel="stylesheet" href="upload.css">
+
+    <!-- JS : File Upload Functionality -->
+    <script defer src="upload.js"></script>
+
+    <!-- JS : Editing Overlay Placement --> 
+    <script defer src="placement.js"></script>
+
+    <!-- library : Font Awesome [ Icons ] -->
+    <script src="https://kit.fontawesome.com/4dff4a55ad.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- section container [ isUploading ] -->
+    <section class="container">
+
+        <!-- span [ orientation ] -->
+        <span class="orientation">
+            This application will only start in either mobile
+            landscape mode and/or on a tablet or larger device.
+        </span>
+        <!-- span [ orientation ] -->
+
+        <!-- header [ header ] -->
+        <header class="header" id="header">
+
+            <h2 class="reactive-title"></h2>
+
+            <!-- container [ buttons ] -->
+            <div class="buttons">
+
+                <!-- input : file [ upload-image ] ( hidden via CSS ) -->
+                <input type="file" name="upload-image" id="upload-image" class="image-upload">
+                <!-- input : file [ upload-image ] ( hidden via CSS ) -->
+
+                <!-- button [ upload-button ] -->
+                <button class="btn" id="upload-button">upload photo</button>
+                <!-- button [ upload-button ] -->
+                
+                <!-- button [ heading-button ] -->
+                <button class="btn" id="heading-button">create title</button>
+                <!-- button [ heading-button ] -->
+
+                <!-- button [ placement-button ] -->
+                <button class="btn" id="placement-button">place title</button>
+                <!-- button [ placement-button ] -->
+
+                <!-- button [ preview-button ] -->
+                <button class="btn" id="preview-button">preview card</button>
+                <!-- button [ preview-button ] -->
+            
+            </div>
+            <!-- container [ buttons ] -->
+
+        </header>
+        <!-- header [ header ] -->
+
+        <!-- article [ content ] -->
+        <article class="content">
+
+            <!-- container [ preview ] -->
+            <div class="preview" id="preview">
+
+                <!-- postcard [ title-placement ] -->
+                <div class="title-placement" id="title-placement"> 
+                    <h2 class="photo-title"></h2>
+                </div>
+                <!-- postcard [ title-placement ] -->
+                
+
+                <!-- module [ overlay ] -->
+                <div class="overlay" id="overlay">
+                    <!-- overlay [ panels ] -->
+                    <div class="panels" id="pnl-tl">top left</div>
+                    <div class="panels" id="pnl-tr">top right</div>
+                    <div class="panels" id="pnl-bl">bottom left</div>
+                    <div class="panels" id="pnl-br">bottom right</div>
+                    <!-- overlay [ panels ] -->
+                </div>
+                <!-- module [ overlay ] -->
+
+                <!-- span [ nofile ] -->
+                <span class="nofile" id="nofile">
+                    Your photo will be displayed here.
+                </span>
+                <!-- span [ nofile ] -->
+
+                <!-- animated loader -->
+                <div class="loader" id="loader">
+                    <!-- icon [ spinner || loading ] -->
+                    <i class="fas fa-spinner" id="spinner"></i>
+                    <!-- icon [ spinner || loading ] -->
+                </div>
+                <!-- animated loader -->
+                
+            </div>
+            <!-- container [ preview ] -->
+
+        </article>
+        <!-- article [ content ] -->
+
+        <!-- button [ finalize-button ] -->
+        <button class="btn" id="finalize-button">finalize</button>
+        <!-- button [ finalize-button ] -->
+        
+
+        <!-- form [ title-form ] -->
+        <form action="" class="title-form" id="title-form">
+
+            <!-- input [ title ] -->
+            <input type="text" name="title" id="title" placeholder="postcard title">
+            <!-- input [ title ] -->
+
+            <!-- button [ title-button ] -->
+            <button class="btn" id="title-button">ok</button>
+            <!-- button [ title-button ] -->
+        </form>
+        <!-- form [ title-form ] -->
+            
+            
+
+        
+
+        
+
+    </section>
+    <!-- section container [ isUploading ] -->
+</body>
+</html>

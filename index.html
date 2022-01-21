@@ -3,104 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RNTLPAY | Home Page | Application</title>
+    <title>Digital Postcards [ Prototype ]</title>
 
-    <!-- css -->
-    <link rel="stylesheet" href="src/css/index.css">
+    <!-- CSS : Compiled & Packages SCSS -->
+    <link rel="stylesheet" href="index.css">
 
-    <!-- scripts -->
-    <!-- <script defer src="src/js/index.js"></script> -->
-    
-    <!-- libs -->
-    <script src="https://kit.fontawesome.com/4dff4a55ad.js" crossorigin="anonymous"></script>
+    <!-- JS : Application Components -->
+    <script defer src="index.js"></script>
 
-    <!-- fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Dosis&amp;family=Josefin+Sans&amp;display=swap" rel="stylesheet">
+    <!-- JS : Prototype File Upload Component -->
+    <script defer src="src/assets/scripts/prototype-upload.js"></script>
+
+    <!-- JS : Prototype Application Navigation States -->
+    <script defer src="src/assets/scripts/prototype-states.js"></script>
+
+    <!-- JS : Prototype Animation Functionality -->
+    <script defer src="src/assets/scripts/prototype-animation.js"></script>
+
+    <!-- JS : Overlay Placement Module -->
+    <script defer src="src/assets/scripts/prototype-overlay.js"></script>
+
+    <!-- JS : Prototype Title Selection -->
+    <script defer src="src/assets/scripts/prototype-selection.js"></script>
 
 </head>
 <body>
+
+
+<!-- application wrapper -->
+<div class="app">
     
-    <!-- header -->
-    <header id="header">
-        <!-- elmnts -->
-        <div class="elmnts">
-            <h1 class="title">rntlpay</h1>
-            <p class="tag">track your expenses</p>
-        </div>
-        <!-- elmnts -->
-    </header>
-    <!-- header -->
+    <!-- main container -->
+    <main class="main">
 
-    <!-- about -->
-    <section id="about">
-        <!-- elmnts -->
-        <div class="elmnts">
-            <h2 class="title">rntlpay</h2>
-            <p class="tag">about rntlpay</p>
-            <p class="text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Facere at et nemo est voluptates in quasi dolorem iste omnis nostrum.
-            </p>
-            <button><a href="app.html"><i class="fab fa-buffer"></i>try now</a></button>
-        </div>
-        <!-- elmnts -->
-    </section>
-    <!-- about -->
+        <!-- section container [ startup ] -->
+        <section class="container" id="startup">
 
-    <!-- prototype -->
-    <section id="prototype">
-        <!-- elmnts -->
-        <div class="elmnts">
-            <!-- output -->
-            <ul>
-                <li>
-                    <i class="fas fa-bed"></i>
-                    <p class="text">rent :</p>
-                    <p class="tag"><span id="rent">14</span> days</p>
-                </li>
-                <li>
-                    <i class="fas fa-dollar-sign"></i>
-                    <p class="text">price :</p>
-                    <p class="tag">$ <span id="price">350</span> due</p>
-                </li>
-                <li>
-                    <i class="fas fa-calendar-alt"></i>
-                    <p class="text">bills :</p>
-                    <p class="tag">$ <span id="bills">100</span> due</p>
-                </li>
-                <li>
-                    <i class="fas fa-shopping-cart"></i>
-                    <p class="text">groceries :</p>
-                    <p class="tag">$ <span id="sshop">130</span> spent</p>
-                </li>
-            </ul>
-            <!-- output -->
-        </div>
-        <div class="elmnts">
-            <h5 class="title">rntlpay</h5>
-            <p class="tag">web application prototypes</p>
-        </div>
-        <!-- elmnts -->
-    </section>
-    <!-- prototype -->
+            <!-- helper [ orientation ] -->
+            <span class="helper">helper</span>
+            <!-- helper [ orientation ] -->
+
+            <!-- button [ startup-button ] -->
+            <button class="btn" id="startup-button">begin</button>
+            <!-- button [ startup-button ] -->
+
+        </section>
+        <!-- section container [ startup ] -->
+
+        <!-- section container [ uploading ] -->
+        <section class="container" id="uploading">
+
+            <!-- component [ postcard ] -->
+            <div class="postcard">
+
+                <!-- input : file [ upload-image ] ( hidden via CSS ) -->
+                <input type="file" name="upload-image" id="upload-image" class="image-upload">
+                <!-- input : file [ upload-image ] ( hidden via CSS ) -->
+
+                <!-- button [ upload-button ] -->
+                <button class="btn" id="upload-button">upload photo</button>
+                <!-- button [ upload-button ] -->
+            </div>
+            <!-- component [ postcard ] -->
+
+            <!-- button [ confirm-button ] -->
+            <button class="btn" id="confirm-button">next</button>
+            <!-- button [ confirm-button ] -->
+
+        </section>
+        <!-- section container [ uploading ] -->
+
+        <!-- section container [ heading ] -->
+        <section class="container" id="heading">
+
+            <!-- component [ postcard ] -->
+            <div class="postcard">
+                <!-- postcard [ face-front ] : background img applied via JS -->
+                <div class="face front">
+
+                    <!-- form [ title-form ] -->
+                    <form action="" class="title-form" id="title-form">
+
+                        <!-- input [ title ] -->
+                        <input type="text" name="title" id="title" placeholder="postcard title">
+                        <!-- input [ title ] -->
+
+                        <!-- button [ selection-button ] -->
+                        <button class="btn" id="selection-button">ok</button>
+                        <!-- button [ selection-button ] -->
+                    </form>
+                    <!-- form [ title-form ] -->
+
+                </div>
+                <!-- postcard [ face-front ] : background img applied via JS -->
+            </div>
+            <!-- component [ postcard ] -->
+
+            <!-- button [ title-button ] -->
+            <button class="btn" id="title-button">next</button>
+            <!-- button [ title-button ] -->
+
+        </section>
+        <!-- section container [ heading ] -->
+
+        <!-- section container [ placement ] -->
+        <section class="container" id="placement">
+
+            <!-- component [ postcard ] -->
+            <div class="postcard">
+                <!-- postcard [ face-front ] : background img applied via JS -->
+                <div class="face front">
+
+                    <!-- postcard [ title-placement ] -->
+                    <div class="title-placement" id="title-placement"> 
+                        <h2 class="photo-title"></h2>
+                    </div>
+                    <!-- postcard [ title-placement ] -->
+                    
+
+                    <!-- module [ overlay ] -->
+                    <div class="overlay" id="overlay">
+                        <!-- overlay [ panels ] -->
+                        <div class="panels" id="pnl-tl">top left</div>
+                        <div class="panels" id="pnl-tr">top right</div>
+                        <div class="panels" id="pnl-bl">bottom left</div>
+                        <div class="panels" id="pnl-br">bottom right</div>
+                        <!-- overlay [ panels ] -->
+                    </div>
+                    <!-- module [ overlay ] -->
+
+                </div>
+                <!-- postcard [ face-front ] : background img applied via JS -->
+            </div>
+            <!-- component [ postcard ] -->
+
+            <!-- button [ placement-button ] -->
+            <button class="btn" id="placement-button">next</button>
+            <!-- button [ placement-button ] -->
+
+        </section>
+        <!-- section container [ placement ] -->
+
+        <!-- section container [ editing ] -->
+        <section class="container" id="editing">
+
+            <!-- postcard [ component ] -->
+            <div class="postcard">
+                
+                <!-- form [ memo-form ] -->
+                <form action="" class="memo-form" id="memo-form">
+                    <!-- form [ control ] -->
+                    <div class="control">
+                        <textarea name="memo" id="memo" cols="30" rows="10" maxlength="120"></textarea>
+                    </div>
+                    <div class="control">
+                        <input type="text" name="fullname" id="fullname" placeholder="fullname">
+                        <input type="text" name="address" id="address" placeholder="address">
+                        <input type="text" name="address2" id="address2" placeholder="">
+                        <input type="text" name="postcode" id="postcode" placeholder="postcode">
+                        <input type="text" name="country" id="country" placeholder="country">
+                    </div>
+                    <!-- form [ control ] -->
+                </form>
+                <!-- form [ memo-form ] -->
+                
+            </div>
+            <!-- postcard [ component ] -->
+
+            <!-- button [ message-button ] -->
+            <button class="btn" id="message-button">confirm</button>
+            <!-- button [ message-button ] -->
+
+            <!-- button [ finalize-button ] -->
+            <button class="btn" id="finalize-button">finalize</button>
+            <!-- button [ finalize-button ] -->
+
+        </section>
+        <!-- section container [ editing ] -->
+
+        <!-- section container [ preview ] -->
+        <section class="container" id="preview">
+
+            <!-- component [ card ] -->
+            <div class="postcard">
+
+                <!-- card [ face : front ] -->
+                <div class="face front">
+                    front
+                    <!-- upload -->
+                </div>
+                <!-- card [ face : front ] -->
+
+                <!-- card [ face : back ] -->
+                <div class="face back">
+                    back
+                    <!-- memo -->
+                </div>
+                <!-- card [ face : back ] -->
+
+            </div>
+            <!-- component [ card ] -->
+
+            <!-- button [ preview-button ] -->
+            <button class="btn" id="preview-button">preview</button>
+            <!-- button [ preview-button ] -->
+
+
+        </section>
+        <!-- section container [ preview ] -->
+
+
     
-    <!-- footer -->
-    <footer id="footer">
-        <div class="elmnts">
-            <p class="tag">web application prototypes</p>
-        </div>
-        <div class="elmnts">
-            <p class="tag">find out more</p>
-            <p class="text">view all nine realms live sites & repositories</p>
-            <button><a href="#"><i class="fab fa-github-square"></i>github</a></button>
-        </div>
-        <div class="elmnts">
-            <h5 class="title">rntlpay</h5>
-            <p class="tag">developed by christopher harris</p>
-            <p class="text">thank you for visiting this page</p>
-        </div>
-    </footer>
-    <!-- footer -->
+    </main>
+    <!-- main container -->
 
+
+    
+
+
+</div>
+<!-- application wrapper -->
+    
 </body>
 </html>

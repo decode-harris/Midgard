@@ -1,0 +1,519 @@
+// Comile SASS into CSS on production
+
+// CSS Reset
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+
+    --wireframe: 2px solid darkblue;
+    --component: 2px solid limegreen;
+    --debugging: 2px solid darkred;
+
+    --border-rd: 8px;
+}
+
+/*
+    Application Components [ WIP ]
+
+    1. App Wrapper
+    2. Main Component
+    3. Input Element
+    4. Image Preview
+
+*/
+
+.app {
+
+    height: 100vh;
+    width: 100%;
+    padding: 1rem;
+
+    // developer border
+    border: var(--wireframe);
+}
+
+/*
+    Main Application Component
+
+    Contains
+        
+
+*/
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 1rem;
+
+
+    // developer border
+    border: var(--wireframe);
+
+}
+
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+
+
+.app {
+    position: relative;
+}
+.container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+
+
+article {
+    height: 400px;
+    width: 100%;
+    padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* developer border */
+    border: var(--debugging);
+}
+
+
+/* card [ form ] component */
+form {
+    height: 100%;
+    width: 100%;
+    
+    display: flex;
+    padding: 1rem;
+
+    /* developer border */
+    border: var(--wireframe);
+}
+
+/* form [ control ] containers */
+.control {
+    height: 100%;
+    
+    /* provide both control containers with display property flex */
+    display: flex;
+
+    /* developer border */
+    border: var(--component);
+}
+.control:nth-child(1) {
+    /* position textarea into the center of the container */
+    justify-content: center;
+    align-items: center;
+    
+    /* pre-defined width [ 60% of card ] */
+    width: 60%;
+}
+.control:nth-child(2) {
+    /* position the input elements into a column in the center of the container */
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+
+    /* pre-defined width [ 40% of card ] */
+    width: 40%;
+    
+}
+/* form control [ input ] elements */
+.control input {
+    // height: 30px;
+    padding: 0.05rem;
+    padding-left: 0.5rem;
+    border: none;
+    border-bottom: 1px solid #000;
+    margin-bottom: 0.25rem;
+
+    background: transparent;
+
+    border: var(--wireframe);
+}
+.control input:last-child {
+    margin-bottom: 0.5rem;
+}
+/* form control input [ placeholder ] elements */
+::placeholder {
+    color: #000;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+}
+textarea {
+    /* height: 100%; */
+    width: 100%;
+    height: 100%;
+    font-size: 1.22rem;
+    background: transparent;
+    
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    border: var(--wireframe);
+}
+
+
+
+
+#upload-image {display:none;} /* remove the input file from view */
+
+
+
+/*
+    Button Style Attributes
+
+        Contains
+        1. Global Button Styles [ Application + Interaction ]
+        2. Component Styles
+            a. Application Buttons
+            b. Interaction Buttons
+
+*/
+.btn {
+
+    // global button styles
+    background: #FFF;
+    color: darkblue;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-top: 2rem;
+    padding: 0.25rem;
+    text-transform: uppercase;
+    width: 120px;
+    
+    // transition properties [ hover-attributes ]
+    transition: 200ms all ease-in-out;
+
+    // developer border
+    border: var(--wireframe);
+    border-radius: var(--border-rd);
+}
+.btn:hover {
+    transition: 200ms all ease-in;
+
+    // transition change attributes
+    background: darkblue;
+    color: #FFF;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+    Postcard Component
+
+    Contains 
+
+    1. Postcard - Visual Interactive Component
+    2. Face - Front & Back Areas of Postcard Component
+        a. Front - File Uploaded Image + User Set Title
+        b. Back - User Memo Input Text Field
+    3. Effects - Click & Hover events correlate with the current postcard face
+
+
+*/
+.card {
+    width: 100%;
+    height: 100%;
+    
+    /* developer border */
+    border: var(--wireframe);
+    border-radius: 8px;
+
+}
+
+/*
+
+    Postcard Component
+
+    Contains 
+
+    1. Postcard - Visual Interactive Component
+    2. Face - Front & Back Areas of Postcard Component
+        a. Front - File Uploaded Image + User Set Title
+        b. Back - User Memo Input Text Field
+    3. Effects - Click & Hover events correlate with the current postcard face
+
+
+*/
+.postcard {
+
+    // position properties [ relative ]
+    position: relative;
+    height: 225px;
+    width: 575px;
+    transform-style: preserve-3d;
+    
+
+    // display properties [ flex - center - center ]
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // background position properties
+    background-position: center;
+    background-size: cover;
+
+    // developer border
+    border: var(--wireframe);
+    border-radius: 8px;
+
+    padding: 1rem;
+
+    // all buttons inside postcard component
+    .btn {
+        // remove the margin-top attribute from any button inside the postcard
+        margin-top: 0;
+    }
+}
+.postcard .face {
+
+    // position properties [ absolute - top - left ]
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+    // display properties [ flex - center - center ]
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* mozilla & edge browser support */
+    -moz-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    color: #FFF;
+    
+    // transform properties
+    transition: 1s ease-in-out;
+    transform: perspective(300px) rotateY(0deg);
+    transform-style: preserve-3d;
+
+    backface-visibility: hidden;
+    border-radius: 8px;
+    
+}
+.postcard .face.front {
+    background: #000;
+    transform-style: preserve-3d;
+
+    // background property attributes
+    background-position: center;
+    background-size: cover;
+}
+.postcard .face.back {
+    background: #3bc2ff;
+    transform: perspective(770px) rotateY(180deg);
+    transform-style: preserve-3d;
+}
+
+/* .postcard:hover .face.front {
+transform: perspective(500px) rotateY(180deg);
+}
+
+.postcard:hover .face.back {
+transform: perspective(500px) rotateY(360deg);
+} */
+
+.postcard .face h1 {
+    font-size: 2em;
+    text-transform: uppercase;
+    transform: perspective(770px) translateZ(50px);
+}
+
+
+// image upload input element
+#image-upload {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 1.25rem;
+
+    // developer border
+    border: var(--wireframe);
+
+}
+
+// image upload input container
+input[type=file] {
+    background: red;
+
+}
+// image upload input button
+::file-selector-button {
+    background: red;
+}
+
+
+
+// File Upload Preview Container
+#image-preview {
+    height: 425px;
+    width: 100%;
+
+    background-position: center;
+    background-size: cover;
+    border-radius: 8px;
+    // margin-top: 5rem;
+
+    // developer border
+    border: var(--wireframe);
+}
+
+
+@media screen and (orientation: portrait) {
+
+    .upload {display:none;}
+
+    /* remove the [ nofile ] helper element */
+    .nofile {display:none;} 
+}
+
+
+/* 
+    Once the user is informed to use the landscape orientation on mobile,
+    apply the following styles for the postcard preview element.
+
+*/
+@media screen and (orientation: landscape) {
+
+    /* remove the [ orientation ] helper from view */
+    .orientation {display:none;}
+    
+    /* forms */
+    #title-form {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        height: 100%;
+        width: 100%;
+        max-width: 400px;
+        padding: 2rem;
+        z-index: 10;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        background: rgba(0, 0, 0, 0.9);
+        border: var(--wireframe);
+    
+    }
+    #title-form input {
+        height: 45px;
+        border-radius: var(--rad-curved);
+        border: var(--wireframe);
+        width: 100%;
+        text-align: center;
+    }
+    #title-form button {
+        margin-top: 1rem;
+        font-size: 1.25rem;
+        padding: 0.25rem;
+        width: 100%;
+        max-width: 120px;
+        
+        border: var(--wireframe);
+        border-radius: var(--rad-curved);
+    }
+
+
+    /* module [ overlay ] */
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+
+        // display properties [ grid - 2 col - auto row ]
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: minmax(10px, auto);
+        gap: 10px;
+        padding: 10px;
+
+        // transparent background attributes
+        background: rgba(0, 0, 0, 0.9);
+        border-radius: var(--rad-curved);
+
+        // remove the overlay module 
+        display: none;
+    }
+    // grid elements [ panels ]
+    .panels {
+
+        // display properties [ flex - center - center ]
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+        color: #FFF;
+        font-weight: bold;
+        text-transform: uppercase;
+
+        /* developer border */
+        border: var(--wireframe);
+
+        // transition properties
+        transition: 200ms all ease-in-out;
+    }
+    .panels:hover {
+        // 
+        background: red;
+    }
+}

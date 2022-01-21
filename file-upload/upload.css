@@ -1,0 +1,344 @@
+/* CSS Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* CSS Variables */
+:root {
+    --wireframe: 2px solid darkblue;
+    --component: 2px solid limegreen;
+
+    --rad-curved: 8px;
+}
+
+
+/* section container */
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+    width: 100%;
+    padding: 1rem;
+
+    /* developer border */
+    border: var(--wireframe);
+}
+
+/* 
+    Header Module
+
+    Contains
+        1. Reactive Title : Change on application state
+        2. Buttons Container : Houses application state buttons
+        3. Application buttons : Interactive & animated buttons
+*/
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    
+    width: 100%;
+    max-width: 720px; /* set a max width for the container element */
+
+    /* developer border */
+    border: var(--wireframe);
+
+}
+
+/* upload container [ buttons ] */
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+
+    /* developer border */
+    border: var(--wireframe);
+}
+.buttons button {
+    width: 160px;
+    padding: 0.5rem;
+
+    /* developer border */
+    border: var(--wireframe);
+    border-radius: var(--rad-curved);
+}
+
+
+/* 
+    Content Article
+
+    Contains
+        1. Image Preview : Users uploaded photo view.
+        2. Editing Overlay : Allows users to visualize outcome.
+        3. No-file Helper : Instructs users on how to use application.
+        4. Application Loader : loading animation element.
+*/
+article {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    padding: 0.25rem;
+    /* developer border */
+    border: var(--wireframe);
+}
+
+#upload-image {display:none;} /* remove the input file from view */
+
+
+
+
+/* remove elements from view */
+.loader {display: none;}
+.title-form {display: none;}
+
+#spinner {
+    animation-name: spinning;
+    animation-duration: 1.2s;
+    animation-iteration-count: infinite;
+}
+@keyframes spinning {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+/* span [ nofile ] : remove when an image has been uploaded */
+.nofile {
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    /* height: 0%; */
+    width: 100%;
+    /* width: 0%; */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* text-decoration: underline; */
+    font-size: 1.1rem;
+    font-weight: bold;
+
+    overflow: hidden;
+
+    background: #FFF;
+
+    /* developer border */
+    /* border: var(--wireframe); */
+
+
+    transition: 400ms all ease;
+}
+
+
+@media screen and (orientation: portrait) {
+
+    .upload {display:none;}
+
+    /* remove the [ nofile ] helper element */
+    .nofile {display:none;} 
+}
+
+
+/* 
+    Once the user is informed to use the landscape orientation on mobile,
+    apply the following styles for the postcard preview element.
+
+*/
+@media screen and (orientation: landscape) {
+
+    /* remove the [ orientation ] helper from view */
+    .orientation {display:none;}
+    
+    /* File Upload Preview Container */
+    #preview {
+
+        position: relative;
+    
+        height: 250px;
+        width: 100%;
+        max-width: 700px;
+    
+        background-position: center;
+        background-size: cover;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        /* developer border */
+        border: var(--wireframe);
+        border-radius: var(--rad-curved);
+    }
+    
+    /* forms */
+    #title-form {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        height: 100%;
+        width: 100%;
+        max-width: 400px;
+        padding: 2rem;
+        z-index: 10;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        background: rgba(0, 0, 0, 0.9);
+        border: var(--wireframe);
+    
+    }
+    #title-form input {
+        height: 45px;
+        border-radius: var(--rad-curved);
+        border: var(--wireframe);
+        width: 100%;
+        text-align: center;
+    }
+    #title-form button {
+        margin-top: 1rem;
+        font-size: 1.25rem;
+        padding: 0.25rem;
+        width: 100%;
+        max-width: 120px;
+        
+        border: var(--wireframe);
+        border-radius: var(--rad-curved);
+    }
+
+
+    /* module [ overlay ] */
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: minmax(100px, auto);
+        gap: 10px;
+        padding: 0.5rem;
+
+        background: rgba(0, 0, 0, 0.9);
+
+        border-radius: var(--rad-curved);
+
+        display: none;
+    }
+    .panels {
+        color: #FFF;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        text-transform: uppercase;
+
+        /* developer border */
+        border: var(--wireframe);
+
+        transition: 200ms all ease-in-out;
+    }
+    .panels:hover {
+        background: red;
+    }
+}
+
+/* media query [ laptop + desktop devices ] */
+@media (min-width: 900px) {
+    #image-preview {
+        max-width: 750px;
+    }
+    
+}
+
+
+
+#title-form {display:none;}
+
+
+
+
+
+
+/* title placement data variables */
+.placement-tl {
+    /* position placement [ top-left ] */
+    position: absolute;
+    top: 10px;
+    left: 10px;
+
+    /* developer border */
+    border: var(--component);
+}
+.placement-tr {
+    /* position placement [ top-right ] */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    /* developer border */
+    border: var(--component);
+}
+.placement-bl {
+    /* position placement [ bottom-left ] */
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+
+    /* developer border */
+    border: var(--component);
+}
+.placement-br {
+    /* position placement [ bottom-right ] */
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+
+    /* developer border */
+    border: var(--component);
+}
+
+
+#finalize-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: darkblue;
+    width: 160px;
+    padding: 0.25rem;
+    height: 40px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    /* background: limegreen; */
+
+    border: none;
+    margin-top: 2rem;
+    border: var(--wireframe);
+    border-radius: var(--rad-curved);
+}

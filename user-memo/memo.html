@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memo [ Component ]</title>
+
+    <!-- CSS : User Memo -->
+    <link rel="stylesheet" href="memo.css">
+
+    <!-- JS : Complete & Compile Card Data -->
+    <script defer src="memo.js"></script>
+    
+</head>
+<body>
+
+    <!-- section container [ IsEditing ] -->
+    <section class="container">
+
+        <!-- article [ content ] -->
+        <article class="content">
+
+            <!-- element [ card ] -->
+            <div class="card">
+
+                <!-- form [ memo-form ] -->
+                <form action="" class="memo-form" id="memo-form">
+                    <!-- form [ control ] -->
+                    <div class="control">
+                        <textarea name="memo" id="memo" cols="30" rows="10" maxlength="120"></textarea>
+                    </div>
+                    <div class="control">
+                        <input type="text" name="fullname" id="fullname" placeholder="fullname">
+                        <input type="text" name="address" id="address" placeholder="address">
+                        <input type="text" name="address2" id="address2" placeholder="">
+                        <input type="text" name="postcode" id="postcode" placeholder="postcode">
+                        <input type="text" name="country" id="country" placeholder="country">
+                    </div>
+                    <!-- form [ control ] -->
+                </form>
+                <!-- form [ memo-form ] -->
+
+            </div>
+            <!-- element [ card ] -->
+
+            <!-- button [ message-button ] -->
+            <button class="btn" id="message-button">confirm message</button>
+            <!-- button [ message-button ] -->
+
+        </article>
+        <!-- article [ content ] -->
+
+    </section>
+    <!-- section container [ IsEditing ] -->
+    
+</body>
+</html>

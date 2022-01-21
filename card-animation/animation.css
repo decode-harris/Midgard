@@ -1,0 +1,118 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --wireframe: 2px solid darkblue;
+}
+
+.container {
+    height: 100vh;
+    width: 100%;
+    background: grey;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 2rem;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    max-height: 250px;
+    
+    /* developer border */
+    border: var(--wireframe);
+    border-radius: 8px;
+
+}
+
+
+/*
+
+    Postcard Component
+
+    Contains 
+
+    1. Postcard - Visual Interactive Component
+    2. Face - Front & Back Areas of Postcard Component
+        a. Front - File Uploaded Image + User Set Title
+        b. Back - User Memo Input Text Field
+    3. Effects - Click & Hover events correlate with the current postcard face
+
+
+*/
+.postcard {
+    position: relative;
+    height: 300px;
+    width: 600px;
+    transform-style: preserve-3d;
+    border-radius: 8px;
+}
+
+.postcard .face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 1s ease-in-out;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    /* mozilla & edge browser support */
+    -moz-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    color: #FFF;
+    /* border: 2px solid red; */
+    transform: perspective(500px) rotateY(0deg);
+
+    border-radius: 8px;
+}
+
+.postcard .face.front {
+    background: #000;
+    transform-style: preserve-3d;
+}
+
+.postcard .face.back {
+    background: #3bc2ff;
+    transform: perspective(500px) rotateY(180deg);
+    transform-style: preserve-3d;
+}
+
+/* .postcard:hover .face.front {
+transform: perspective(500px) rotateY(180deg);
+}
+
+.postcard:hover .face.back {
+transform: perspective(500px) rotateY(360deg);
+} */
+
+.postcard .face h1 {
+    font-size: 2em;
+    text-transform: uppercase;
+    transform: perspective(500px) translateZ(50px);
+}
+
+
+/* button [ card-preview ]  */
+#card-preview {
+    height: 40px;
+    width: 120px;
+    margin-top: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.25rem;
+    border-radius: 8px;
+    border: none;
+    background: #000;
+    color: #FFF;
+}
