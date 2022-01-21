@@ -14,7 +14,7 @@
     <!-- JS : Prototype File Upload Component -->
     <script defer src="src/assets/scripts/prototype-upload.js"></script>
 
-    <!-- JS : Prototype Application Navigation States -->
+    <!-- JS : Prototype Application State Navigation -->
     <script defer src="src/assets/scripts/prototype-states.js"></script>
 
     <!-- JS : Prototype Animation Functionality -->
@@ -25,6 +25,12 @@
 
     <!-- JS : Prototype Title Selection -->
     <script defer src="src/assets/scripts/prototype-selection.js"></script>
+
+    <!-- JS : Prototype Memo Form Module -->
+    <script defer src="src/assets/scripts/prototype-memo.js"></script>
+
+    <!-- JS : Prototype Postcard Color Module -->
+    <script defer src="src/assets/scripts/prototype-colors.js"></script>
 
 </head>
 <body>
@@ -39,14 +45,30 @@
         <!-- section container [ startup ] -->
         <section class="container" id="startup">
 
-            <!-- helper [ orientation ] -->
-            <span class="helper">helper</span>
-            <!-- helper [ orientation ] -->
+            <!-- component [ postcard ] -->
+            <div class="postcard">
+                <!-- postcard [ face-front ] -->
+                <div class="face front">
 
-            <!-- button [ startup-button ] -->
-            <button class="btn" id="startup-button">begin</button>
-            <!-- button [ startup-button ] -->
+                    <!-- span [ helper ] ( display on mobile : landscape mode ) -->
+                    <span class="helper">
+                        Your uploaded image will appear here.
+                    </span>
+                    <!-- span [ helper ] ( display on mobile : landscape mode ) -->
+                
+                </div>
+                <!-- postcard [ face-front ] -->
+            </div>
+            <!-- component [ postcard ] -->
 
+            <!-- button container [ buttons ] -->
+            <div class="buttons">
+                <!-- button [ startup-button ] -->
+                <button class="btn" id="startup-button">start</button>
+                <!-- button [ startup-button ] -->
+            </div>
+            <!-- button container [ buttons ] -->
+            
         </section>
         <!-- section container [ startup ] -->
 
@@ -56,20 +78,31 @@
             <!-- component [ postcard ] -->
             <div class="postcard">
 
-                <!-- input : file [ upload-image ] ( hidden via CSS ) -->
-                <input type="file" name="upload-image" id="upload-image" class="image-upload">
-                <!-- input : file [ upload-image ] ( hidden via CSS ) -->
+                <!-- postcard [ face-front ] -->
+                <div class="face front">
+                    <!-- input : file [ upload-image ] ( hidden via CSS ) -->
+                    <input type="file" name="upload-image" id="upload-image" class="image-upload">
+                    <!-- input : file [ upload-image ] ( hidden via CSS ) -->
 
-                <!-- button [ upload-button ] -->
-                <button class="btn" id="upload-button">upload photo</button>
-                <!-- button [ upload-button ] -->
+                    <!-- button [ image-button ] -->
+                    <button class="btn" id="image-button">upload</button>
+                    <!-- button [ image-button ] -->
+                </div>
+                <!-- postcard [ face-front ] -->
+            
             </div>
             <!-- component [ postcard ] -->
 
-            <!-- button [ confirm-button ] -->
-            <button class="btn" id="confirm-button">next</button>
-            <!-- button [ confirm-button ] -->
+            <!-- button container [ buttons ] -->
+            <div class="buttons">
 
+                <!-- button [ upload-button ] -->
+                <button class="btn" id="upload-button">next</button>
+                <!-- button [ upload-button ] -->
+
+            </div>
+            <!-- button container [ buttons ] -->
+        
         </section>
         <!-- section container [ uploading ] -->
 
@@ -83,6 +116,9 @@
 
                     <!-- form [ title-form ] -->
                     <form action="" class="title-form" id="title-form">
+
+                        <!-- input label -->
+                        <label for="title">choose a title</label>
 
                         <!-- input [ title ] -->
                         <input type="text" name="title" id="title" placeholder="postcard title">
@@ -99,10 +135,16 @@
             </div>
             <!-- component [ postcard ] -->
 
-            <!-- button [ title-button ] -->
-            <button class="btn" id="title-button">next</button>
-            <!-- button [ title-button ] -->
+            <!-- button container [ buttons] -->
+            <div class="buttons">
 
+                <!-- button [ title-button ] -->
+                <button class="btn" id="title-button">next</button>
+                <!-- button [ title-button ] -->
+
+            </div>
+            <!-- button container [ buttons] -->
+        
         </section>
         <!-- section container [ heading ] -->
 
@@ -137,10 +179,16 @@
             </div>
             <!-- component [ postcard ] -->
 
-            <!-- button [ placement-button ] -->
-            <button class="btn" id="placement-button">next</button>
-            <!-- button [ placement-button ] -->
+            <!-- button container [ buttons ] -->
+            <div class="buttons">
 
+                <!-- button [ placement-button ] -->
+                <button class="btn" id="placement-button">next</button>
+                <!-- button [ placement-button ] -->
+
+            </div>
+            <!-- button container [ buttons ] -->
+            
         </section>
         <!-- section container [ placement ] -->
 
@@ -149,35 +197,45 @@
 
             <!-- postcard [ component ] -->
             <div class="postcard">
-                
-                <!-- form [ memo-form ] -->
-                <form action="" class="memo-form" id="memo-form">
-                    <!-- form [ control ] -->
-                    <div class="control">
-                        <textarea name="memo" id="memo" cols="30" rows="10" maxlength="120"></textarea>
-                    </div>
-                    <div class="control">
-                        <input type="text" name="fullname" id="fullname" placeholder="fullname">
-                        <input type="text" name="address" id="address" placeholder="address">
-                        <input type="text" name="address2" id="address2" placeholder="">
-                        <input type="text" name="postcode" id="postcode" placeholder="postcode">
-                        <input type="text" name="country" id="country" placeholder="country">
-                    </div>
-                    <!-- form [ control ] -->
-                </form>
-                <!-- form [ memo-form ] -->
-                
+
+                <!-- postcard [ face-back ] -->
+                <div class="face front">
+
+                    <!-- form [ memo-form ] -->
+                    <form action="" class="memo-form" id="memo-form">
+                        <!-- form [ control ] -->
+                        <div class="control">
+                            <textarea name="memo" id="memo" cols="30" rows="10" maxlength="120"></textarea>
+                        </div>
+                        <div class="control">
+                            <input type="text" name="fullname" id="fullname" placeholder="fullname">
+                            <input type="text" name="address" id="address" placeholder="address">
+                            <input type="text" name="address2" id="address2" placeholder="">
+                            <input type="text" name="postcode" id="postcode" placeholder="postcode">
+                            <input type="text" name="country" id="country" placeholder="country">
+                        </div>
+                        <!-- form [ control ] -->
+                    </form>
+                    <!-- form [ memo-form ] -->
+
+                </div>
+                <!-- postcard [ face-back ] -->
+            
             </div>
             <!-- postcard [ component ] -->
 
-            <!-- button [ message-button ] -->
-            <button class="btn" id="message-button">confirm</button>
-            <!-- button [ message-button ] -->
+            <!-- button container [ buttons ] -->
+            <div class="buttons">
+                <!-- button [ message-button ] -->
+                <button class="btn" id="message-button">confirm</button>
+                <!-- button [ message-button ] -->
 
-            <!-- button [ finalize-button ] -->
-            <button class="btn" id="finalize-button">finalize</button>
-            <!-- button [ finalize-button ] -->
-
+                <!-- button [ finalize-button ] -->
+                <button class="btn" id="finalize-button">finalize</button>
+                <!-- button [ finalize-button ] -->
+            </div>
+            <!-- button container [ buttons ] -->
+        
         </section>
         <!-- section container [ editing ] -->
 
@@ -189,30 +247,82 @@
 
                 <!-- card [ face : front ] -->
                 <div class="face front">
-                    front
-                    <!-- upload -->
+
+                    
+                    
                 </div>
                 <!-- card [ face : front ] -->
 
                 <!-- card [ face : back ] -->
                 <div class="face back">
-                    back
-                    <!-- memo -->
+
+                    
+                    <!-- span [ prototype-layout ] -->
+                    <span class="prototype-layout">
+
+                        <!-- left -->
+                        <div class="elements">
+                            <!-- span [ memo-preview ] -->
+                            <span class="memo-preview" id="memo-preview">user memo</span>
+                            <!-- span [ memo-preview ] -->
+                        </div>
+                        <!-- left -->
+
+                        <!-- right -->
+                        <div class="elements">
+
+                            <!-- element [ title ] ( alter on production ) -->
+                            <h4 class="title">recipient data ( stamp area on production )</h4>
+                            <!-- element [ title ] ( alter on production ) -->
+
+                            <!-- un-ordered list [ list ] -->
+                            <ul class="list">
+                                <!-- list [ items ] -->
+                                <li class="items">101 Melbourne Road</li>
+                                <li class="items">Melbourne, Victoria</li>
+                                <li class="items">3000</li>
+                                <li class="items">Australia</li>
+                                <!-- list [ items ] -->
+                            </ul>
+                            <!-- un-ordered list [ list ] -->
+                            
+                        </div>
+                        <!-- right -->
+                    </span>
+                    <!-- span [ prototype-layout ] -->
                 </div>
                 <!-- card [ face : back ] -->
 
             </div>
             <!-- component [ card ] -->
 
-            <!-- button [ preview-button ] -->
-            <button class="btn" id="preview-button">preview</button>
-            <!-- button [ preview-button ] -->
+            <!-- button container [ buttons ] -->
+            <div class="buttons">
+                <!-- button [ preview-button ] -->
+                <button class="btn" id="preview-button">preview</button>
+                <!-- button [ preview-button ] -->
 
-
+                <!-- button [ accept-button ] -->
+                <button class="btn" id="accept-button">accept</button>
+                <!-- button [ accept-button ] -->
+            </div>
+            <!-- button container [ buttons ] -->
+        
         </section>
         <!-- section container [ preview ] -->
 
+        <!-- span [ orientation ] ( display on mobile : portrait mode ) -->
+        <span class="orientation">
+            <!-- orientation [ title ] -->
+            <h3 class="title">Oh No!</h3>
+            <!-- orientation [ title ] -->
 
+            <!-- notes -->
+            This application will only start in either mobile
+            landscape mode and/or on a tablet or larger device.
+            <!-- notes -->
+        </span>
+        <!-- span [ orientation ] ( display on mobile : portrait mode ) -->
     
     </main>
     <!-- main container -->
