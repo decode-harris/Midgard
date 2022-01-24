@@ -3,336 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Postcards [ Prototype ]</title>
+    <title>Card Component [ Prototype ]</title>
 
-    <!-- CSS : Compiled & Packages SCSS -->
     <link rel="stylesheet" href="index.css">
 
-    <!-- JS : Application Components -->
-    <script defer src="index.js"></script>
+    <!-- <script defer src="prototype.js"></script> -->
+    <script defer src="src/assets/scripts/prototype-components.js"></script>
 
-    <!-- JS : Prototype File Upload Component -->
-    <script defer src="src/assets/scripts/prototype-upload.js"></script>
-
-    <!-- JS : Prototype Application State Navigation -->
     <script defer src="src/assets/scripts/prototype-states.js"></script>
 
-    <!-- JS : Prototype Animation Functionality -->
-    <script defer src="src/assets/scripts/prototype-animation.js"></script>
+    <script defer src="src/assets/scripts/prototype-stages.js"></script>
 
-    <!-- JS : Overlay Placement Module -->
+    <script defer src="src/assets/scripts/prototype-upload.js"></script>
+
     <script defer src="src/assets/scripts/prototype-overlay.js"></script>
 
-    <!-- JS : Prototype Title Selection -->
-    <script defer src="src/assets/scripts/prototype-selection.js"></script>
+    <script defer src="src/assets/scripts/prototype-animation.js"></script>
 
-    <!-- JS : Prototype Memo Form Module -->
     <script defer src="src/assets/scripts/prototype-memo.js"></script>
 
-    <!-- JS : Prototype Postcard Color Module -->
     <script defer src="src/assets/scripts/prototype-colors.js"></script>
 
 </head>
 <body>
 
-
 <!-- application wrapper -->
 <div class="app">
-    
+
     <!-- main container -->
     <main class="main">
 
-        <!-- section container [ startup ] -->
-        <section class="container" id="startup">
+        <!-- header component [ header ] -->
+        <header class="header" id="header">
 
-            <!-- component [ postcard ] -->
-            <div class="postcard">
-                <!-- postcard [ face-front ] -->
-                <div class="face front">
-
-                    <!-- span [ helper ] ( display on mobile : landscape mode ) -->
-                    <span class="helper">
-                        Your uploaded image will appear here.
-                    </span>
-                    <!-- span [ helper ] ( display on mobile : landscape mode ) -->
+            <!-- header un-ordered list [ list ] -->
+            <ul class="list">
                 
-                </div>
-                <!-- postcard [ face-front ] -->
-            </div>
-            <!-- component [ postcard ] -->
+                <!-- list items & span loading elements -->
+                <li class="items"></li>
+                <span class="loading"></span>
+                <li class="items"></li>
+                <span class="loading"></span>
+                <li class="items"></li>
+                <span class="loading"></span>
+                <li class="items"></li>
+                <span class="loading"></span>
+                <li class="items"></li>
+                <!-- list items & span loading elements -->
 
-            <!-- button container [ buttons ] -->
-            <div class="buttons">
-                <!-- button [ startup-button ] -->
-                <button class="btn" id="startup-button">start</button>
-                <!-- button [ startup-button ] -->
-            </div>
-            <!-- button container [ buttons ] -->
-            
-        </section>
-        <!-- section container [ startup ] -->
+            </ul>
+            <!-- header un-ordered list [ list ] -->
 
-        <!-- section container [ uploading ] -->
-        <section class="container" id="uploading">
+        </header>
+        <!-- header component [ header ] -->
 
-            <!-- component [ postcard ] -->
-            <div class="postcard">
+        <!-- main component [ postcard ] -->
+        <section class="postcard" id="postcard">
 
-                <!-- postcard [ face-front ] -->
-                <div class="face front">
-                    <!-- input : file [ upload-image ] ( hidden via CSS ) -->
-                    <input type="file" name="upload-image" id="upload-image" class="image-upload">
-                    <!-- input : file [ upload-image ] ( hidden via CSS ) -->
+            <!-- article postcard face [ front ] -->
+            <article class="face front">
 
-                    <!-- button [ image-button ] -->
-                    <button class="btn" id="image-button">upload</button>
-                    <!-- button [ image-button ] -->
-                </div>
-                <!-- postcard [ face-front ] -->
-            
-            </div>
-            <!-- component [ postcard ] -->
+                <!-- span [ helper ] ( display on mobile : landscape mode ) -->
+                <span class="helper">
+                    Your uploaded image will appear here.
+                </span>
+                <!-- span [ helper ] ( display on mobile : landscape mode ) -->
 
-            <!-- button container [ buttons ] -->
-            <div class="buttons">
+                <!-- form [ title-form ] -->
+                <form action="" class="title-form" id="title-form">
 
-                <!-- button [ upload-button ] -->
-                <button class="btn" id="upload-button">next</button>
-                <!-- button [ upload-button ] -->
+                    <!-- input label -->
+                    <label for="title">choose a title</label>
 
-            </div>
-            <!-- button container [ buttons ] -->
-        
-        </section>
-        <!-- section container [ uploading ] -->
+                    <!-- input [ title ] -->
+                    <input type="text" name="title" id="title" placeholder="postcard title">
+                    <!-- input [ title ] -->
 
-        <!-- section container [ heading ] -->
-        <section class="container" id="heading">
+                    <!-- button [ selection-button ] -->
+                    <button class="btn" id="selection-button">ok</button>
+                    <!-- button [ selection-button ] -->
+                </form>
+                <!-- form [ title-form ] -->
 
-            <!-- component [ postcard ] -->
-            <div class="postcard">
-                <!-- postcard [ face-front ] : background img applied via JS -->
-                <div class="face front">
-
-                    <!-- form [ title-form ] -->
-                    <form action="" class="title-form" id="title-form">
-
-                        <!-- input label -->
-                        <label for="title">choose a title</label>
-
-                        <!-- input [ title ] -->
-                        <input type="text" name="title" id="title" placeholder="postcard title">
-                        <!-- input [ title ] -->
-
-                        <!-- button [ selection-button ] -->
-                        <button class="btn" id="selection-button">ok</button>
-                        <!-- button [ selection-button ] -->
-                    </form>
-                    <!-- form [ title-form ] -->
-
-                </div>
-                <!-- postcard [ face-front ] : background img applied via JS -->
-            </div>
-            <!-- component [ postcard ] -->
-
-            <!-- button container [ buttons] -->
-            <div class="buttons">
-
-                <!-- button [ title-button ] -->
-                <button class="btn" id="title-button">next</button>
-                <!-- button [ title-button ] -->
-
-            </div>
-            <!-- button container [ buttons] -->
-        
-        </section>
-        <!-- section container [ heading ] -->
-
-        <!-- section container [ placement ] -->
-        <section class="container" id="placement">
-
-            <!-- component [ postcard ] -->
-            <div class="postcard">
-                <!-- postcard [ face-front ] : background img applied via JS -->
-                <div class="face front">
-
+                <!-- title-placement element -->
+                <span class="title-placement">
                     <!-- postcard [ title-placement ] -->
-                    <div class="title-placement" id="title-placement"> 
-                        <h2 class="photo-title"></h2>
-                    </div>
+                    <h2 class="photo-title"></h2>
                     <!-- postcard [ title-placement ] -->
-                    
+                </span>
+                <!-- title-placement element -->
+                
+                <!-- aside module [ overlay ] -->
+                <ul class="overlay" id="overlay">
+                    <!-- overlay [ panels ] -->
+                    <li class="panels" id="pnl-tl">top left</li>
+                    <li class="panels" id="pnl-tr">top right</li>
+                    <li class="panels" id="pnl-bl">bottom left</li>
+                    <li class="panels" id="pnl-br">bottom right</li>
+                    <!-- overlay [ panels ] -->
+                </ul>
+                <!-- aside module [ overlay ] -->
+                
+            </article>
+            <!-- article postcard face [ front ] -->
 
-                    <!-- module [ overlay ] -->
-                    <div class="overlay" id="overlay">
-                        <!-- overlay [ panels ] -->
-                        <div class="panels" id="pnl-tl">top left</div>
-                        <div class="panels" id="pnl-tr">top right</div>
-                        <div class="panels" id="pnl-bl">bottom left</div>
-                        <div class="panels" id="pnl-br">bottom right</div>
-                        <!-- overlay [ panels ] -->
+            <!-- article postcard face [ back ] -->
+            <article class="face back">
+
+                <!-- form [ memo-form ] -->
+                <form action="" class="memo-form" id="memo-form">
+                    <!-- form [ control ] -->
+                    <div class="control">
+                        <textarea name="memo" id="memo" cols="30" rows="10" maxlength="120"></textarea>
                     </div>
-                    <!-- module [ overlay ] -->
+                    <div class="control">
+                        <input type="text" name="fullname" id="fullname" placeholder="fullname">
+                        <input type="text" name="address" id="address" placeholder="address">
+                        <input type="text" name="address2" id="address2" placeholder="">
+                        <input type="text" name="postcode" id="postcode" placeholder="postcode">
+                        <input type="text" name="country" id="country" placeholder="country">
+                    </div>
+                    <!-- form [ control ] -->
+                </form>
+                <!-- form [ memo-form ] -->
+
+                <!-- article [ postcard-content ] element -->
+                <div class="postcard-content" id="postcard-content">
+
+                    <!-- text [ sender-message ] -->
+                    <p class="sender-message" id="sender-message"></p>
+                    <!-- text [ sender-message ] -->
+
+                    <!-- un-ordered list [ recipient-list ] -->
+                    <ul class="recipient-list" id="recipient-list">
+                        <!-- recipient data -->
+                        <li class="fullname"></li>
+                        <li class="address"></li>
+                        <li class="postcode"></li>
+                        <li class="country"></li>
+                        <!-- recipient data -->
+                    </ul>
+                    <!-- un-ordered list [ recipient-list ] -->
 
                 </div>
-                <!-- postcard [ face-front ] : background img applied via JS -->
-            </div>
-            <!-- component [ postcard ] -->
+                <!-- article [ postcard-content ] element -->
 
-            <!-- button container [ buttons ] -->
-            <div class="buttons">
-
-                <!-- button [ placement-button ] -->
-                <button class="btn" id="placement-button">next</button>
-                <!-- button [ placement-button ] -->
-
-            </div>
-            <!-- button container [ buttons ] -->
+                <!-- un-ordered list [ colors-list ] -->
+                <ul class="colors-list" id="colors-list">
+                    <!-- color-list [ colors ] -->
+                    <li class="colors"></li>
+                    <li class="colors"></li>
+                    <li class="colors"></li>
+                    <li class="colors"></li>
+                    <li class="colors"></li>
+                    <!-- color-list [ colors ] -->
+                </ul>
+                <!-- un-ordered list [ colors-list ] -->
             
-        </section>
-        <!-- section container [ placement ] -->
-
-        <!-- section container [ editing ] -->
-        <section class="container" id="editing">
-
-            <!-- postcard [ component ] -->
-            <div class="postcard">
-
-                <!-- postcard [ face-back ] -->
-                <div class="face front">
-
-                    <!-- form [ memo-form ] -->
-                    <form action="" class="memo-form" id="memo-form">
-                        <!-- form [ control ] -->
-                        <div class="control">
-                            <textarea name="memo" id="memo" cols="30" rows="10" maxlength="120"></textarea>
-                        </div>
-                        <div class="control">
-                            <input type="text" name="fullname" id="fullname" placeholder="fullname">
-                            <input type="text" name="address" id="address" placeholder="address">
-                            <input type="text" name="address2" id="address2" placeholder="">
-                            <input type="text" name="postcode" id="postcode" placeholder="postcode">
-                            <input type="text" name="country" id="country" placeholder="country">
-                        </div>
-                        <!-- form [ control ] -->
-                    </form>
-                    <!-- form [ memo-form ] -->
-
-                </div>
-                <!-- postcard [ face-back ] -->
-            
-            </div>
-            <!-- postcard [ component ] -->
-
-            <!-- button container [ buttons ] -->
-            <div class="buttons">
-                <!-- button [ message-button ] -->
-                <button class="btn" id="message-button">confirm</button>
-                <!-- button [ message-button ] -->
-
-                <!-- button [ finalize-button ] -->
-                <button class="btn" id="finalize-button">finalize</button>
-                <!-- button [ finalize-button ] -->
-            </div>
-            <!-- button container [ buttons ] -->
+            </article>
+            <!-- article postcard face [ back ] -->
         
         </section>
-        <!-- section container [ editing ] -->
+        <!-- main component [ postcard ] -->
 
-        <!-- section container [ preview ] -->
-        <section class="container" id="preview">
+        <!-- navigation component [ buttons ] -->
+        <nav class="buttons" id="nav">
 
-            <!-- component [ card ] -->
-            <div class="postcard">
+            <!-- button application state change :  [ application - upload ] -->
+            <button class="btn" id="application-button">start</button>
+            <!-- button application state change :  [ application - upload ] -->
 
-                <!-- card [ face : front ] -->
-                <div class="face front">
+            <!-- input : file [ upload-image ] ( hidden via CSS ) -->
+            <input type="file" name="upload-image" id="upload-image" class="image-upload">
+            <!-- input : file [ upload-image ] ( hidden via CSS ) -->
 
-                    
-                    
-                </div>
-                <!-- card [ face : front ] -->
+            <!-- file action button : [ open file directory ]  -->
+            <button class="btn" id="image-button">upload</button>
+            <!-- file action button : [ open file directory ]  -->
 
-                <!-- card [ face : back ] -->
-                <div class="face back">
+            <!-- button application state change :  [ upload - title ] -->
+            <button class="btn" id="upload-button">next</button>
+            <!-- button application state change :  [ upload - title ] -->
 
-                    
-                    <!-- span [ prototype-layout ] -->
-                    <span class="prototype-layout">
+            <!-- button application state change :  [ title - placement ] -->
+            <button class="btn" id="title-button">next</button>
+            <!-- button application state change :  [ title - placement ] -->
 
-                        <!-- left -->
-                        <div class="elements">
-                            <!-- span [ memo-preview ] -->
-                            <span class="memo-preview" id="memo-preview">user memo</span>
-                            <!-- span [ memo-preview ] -->
-                        </div>
-                        <!-- left -->
+            <!-- button application state change :  [ placement - memo ] -->
+            <button class="btn" id="placement-button">next</button>
+            <!-- button application state change :  [ placement - memo ] -->
 
-                        <!-- right -->
-                        <div class="elements">
+            <!-- button application state change :  [ placement - memo ] -->
+            <button class="btn" id="confirmation-button">next</button>
+            <!-- button application state change :  [ placement - memo ] -->
 
-                            <!-- element [ title ] ( alter on production ) -->
-                            <h4 class="title">recipient data ( stamp area on production )</h4>
-                            <!-- element [ title ] ( alter on production ) -->
+            <!-- button application state change :  [ memo - finalize ] -->
+            <button class="btn" id="message-button">confirm</button>
+            <!-- button application state change :  [ memo - finalize ] -->
 
-                            <!-- un-ordered list [ list ] -->
-                            <ul class="list">
-                                <!-- list [ items ] -->
-                                <li class="items">101 Melbourne Road</li>
-                                <li class="items">Melbourne, Victoria</li>
-                                <li class="items">3000</li>
-                                <li class="items">Australia</li>
-                                <!-- list [ items ] -->
-                            </ul>
-                            <!-- un-ordered list [ list ] -->
-                            
-                        </div>
-                        <!-- right -->
-                    </span>
-                    <!-- span [ prototype-layout ] -->
-                </div>
-                <!-- card [ face : back ] -->
+            <!-- button application state change :  [ finalize - preview ] -->
+            <button class="btn" id="finalize-button">finalize</button>
+            <!-- button application state change :  [ finalize - preview ] -->
 
-            </div>
-            <!-- component [ card ] -->
+            <!-- button application state change :  [ 3D card preview ] -->
+            <button class="btn" id="preview-button">preview</button>
+            <!-- button application state change :  [ 3D card preview ] -->
 
-            <!-- button container [ buttons ] -->
-            <div class="buttons">
-                <!-- button [ preview-button ] -->
-                <button class="btn" id="preview-button">preview</button>
-                <!-- button [ preview-button ] -->
+            <!-- button application state change :  [ Header Complete Button ] -->
+            <button class="btn" id="complete-button">send</button>
+            <!-- button application state change :  [ Header Complete Button ] -->
+            
+        </nav>
+        <!-- navigation component [ buttons ] -->
 
-                <!-- button [ accept-button ] -->
-                <button class="btn" id="accept-button">accept</button>
-                <!-- button [ accept-button ] -->
-            </div>
-            <!-- button container [ buttons ] -->
-        
-        </section>
-        <!-- section container [ preview ] -->
-
-        <!-- span [ orientation ] ( display on mobile : portrait mode ) -->
-        <span class="orientation">
-            <!-- orientation [ title ] -->
-            <h3 class="title">Oh No!</h3>
-            <!-- orientation [ title ] -->
-
-            <!-- notes -->
-            This application will only start in either mobile
-            landscape mode and/or on a tablet or larger device.
-            <!-- notes -->
-        </span>
-        <!-- span [ orientation ] ( display on mobile : portrait mode ) -->
-    
     </main>
     <!-- main container -->
-
-
-    
-
-
 </div>
 <!-- application wrapper -->
-    
+
 </body>
 </html>

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,33 +6,31 @@
 }
 
 :root {
-  --wireframe: 2px solid darkblue;
+  --blueink: darkblue;
+  --wireframe: 2px solid var(--blueink);
   --component: 2px solid limegreen;
   --debugging: 2px solid darkred;
   --border-rd: 8px;
+  --google-ft: "Poppins", sans-serif;
 }
 
-/*
-    Application Components [ WIP ]
-
-    1. App Wrapper
-    2. Main Component
-    3. Input Element
-    4. Image Preview
-
-*/
 .app {
+  position: relative;
   height: 100vh;
   width: 100%;
   padding: 1rem;
+  font-family: var(--google-ft);
   border: var(--wireframe);
 }
 
 /*
-    Main Application Component
+    Main Application Container
 
-    Contains
-
+    Contains application components
+        1. Header - Application Stage Visual Loader
+        2. Section - Postcard Component
+        3. Article - Card Creation Module
+        4. Navigation - Navigation Button Container
 
 */
 main {
@@ -40,49 +39,216 @@ main {
   align-items: center;
   justify-content: center;
   height: 100%;
-  padding: 1rem;
+  padding: 0.5rem;
   border: var(--wireframe);
 }
-
-section {
+main header {
+  width: 100%;
+  max-width: 400px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-transform: uppercase;
-  font-size: 1.2rem;
-  font-weight: bold;
-  letter-spacing: 2px;
+  border: var(--wireframe);
+  border-radius: var(--border-rd);
 }
-
-.app {
+main section {
   position: relative;
+  height: 225px;
+  width: 500px;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
 }
-
-.container {
+main nav {
+  width: 400px;
+  height: 50px;
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border: var(--wireframe);
+  border-radius: var(--border-rd);
+}
+main article {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  padding: 1rem;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-article {
-  height: 400px;
-  width: 100%;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  /* developer border */
-  border: var(--debugging);
+  /* mozilla & edge browser support */
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: 1s ease-in-out;
+  transform: perspective(770px) rotateY(0deg);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  background-position: center;
+  background-size: cover;
+  border: var(--wireframe);
+  border-radius: 8px;
 }
 
-/* card [ form ] component */
+/*
+    Header Component : Application Stage Visual Loader
+
+    Provides the user with a visual pathway for the application
+    creation process.
+        1. List - Un-ordered List Element
+        2. Items - Un-ordered List Items
+        3. Span - Animated Loading / Process Line
+*/
+header .list {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: #FFF;
+  text-align: center;
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+header .items {
+  padding: 0;
+  margin: 0;
+  height: 20px;
+  width: 20px;
+  border: var(--wireframe);
+  border-radius: 50%;
+}
+
+/*
+    Postcard Component : Card Creation Module
+
+        Contains the card component with the creation module 
+        forms & overlays.
+        1. Face Front : Placement for Creation Module Forms
+        2. Face Back : Placement for Memo & Recipient Data
+*/
+section .face.front {
+  transform-style: preserve-3d;
+  background-position: center;
+  background-size: cover;
+}
+
+section .face.back {
+  background: #FFF;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  padding: 1rem;
+  transform: perspective(770px) rotateY(180deg);
+  transform-style: preserve-3d;
+}
+
+/* .postcard:hover .face.front {
+transform: perspective(500px) rotateY(180deg);
+}
+.postcard:hover .face.back {
+transform: perspective(500px) rotateY(360deg);
+} */
+/*
+    Form Module : Memo - [ Output Data ]
+
+        Sender Message : Textarea data output element for preview.
+
+        Recipient List : List module output element for recipient data.
+
+*/
+.postcard-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: var(--wireframe);
+  border-radius: var(--border-rd);
+}
+
+.sender-message {
+  height: 100%;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0.25rem;
+  border-radius: var(--border-rd);
+}
+
+.recipient-list {
+  height: 100%;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  list-style-type: none;
+  padding: 0.25rem;
+  border-left: var(--wireframe);
+}
+.recipient-list li {
+  padding-left: 0.5rem;
+  color: #000;
+  font-size: 0.85rem;
+  text-decoration: underline;
+  border: var(--wireframe);
+}
+.recipient-list li:nth-child(4) {
+  margin-bottom: 0.5rem;
+}
+
+/*
+    Color Selection Module : Colors List
+
+        Replaces an action button on the navigation button container 
+        with five ( 5 ) color choices for the postcard.
+*/
+.colors-list {
+  height: 50px;
+  width: 400px;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style-type: none;
+  background: #FFF;
+  /* dev border */
+  border: var(--wireframe);
+  border-radius: var(--border-rd);
+}
+.colors-list .colors {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: var(--wireframe);
+}
+
+/*
+    Form Modules
+
+    Both form modules will be encased inside a postcard component.
+
+    If in creative mode ( user interaction ), the form will be attached
+    on the 'front' of the postcard face component.
+
+    Contains
+        1. Global Form Styles
+        2. Specific Form Styles 
+            a. Title Form : User Title Selection
+            b. Memo Form : User Notes + Recipient Data
+
+*/
 form {
   height: 100%;
   width: 100%;
@@ -90,6 +256,48 @@ form {
   padding: 1rem;
   /* developer border */
   border: var(--wireframe);
+}
+form label {
+  font-size: 1rem;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  padding-bottom: 1rem;
+  color: whitesmoke;
+}
+
+/* forms */
+#title-form {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.7);
+  border: var(--wireframe);
+}
+
+#title-form input {
+  height: 45px;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  border: var(--wireframe);
+  border-radius: var(--border-rd);
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+  color: var(--blueink);
+  font-weight: bold;
+}
+
+#title-form button {
+  margin-top: 1rem;
+  width: 100%;
+  max-width: 140px;
+  border: var(--wireframe);
+  border-radius: var(--border-rd);
 }
 
 /* form [ control ] containers */
@@ -136,7 +344,6 @@ form {
 /* form control input [ placeholder ] elements */
 ::placeholder {
   color: #000;
-  font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -154,141 +361,55 @@ textarea {
   border: var(--wireframe);
 }
 
-#upload-image {
-  display: none;
-}
-
-/* remove the input file from view */
 /*
-    Button Style Attributes
+    Navigation Component Elements
 
-        Contains
-        1. Global Button Styles [ Application + Interaction ]
-        2. Component Styles
-            a. Application Buttons
-            b. Interaction Buttons
-
+        Contains all application event buttons.
+        Provides global styles & attributes to all navigation buttons
+        and an ease-in transition when each button state changes.
 */
-.btn {
-  background: #FFF;
-  color: darkblue;
-  font-weight: bold;
-  letter-spacing: 2px;
-  margin-top: 2rem;
+button {
   padding: 0.25rem;
+  height: 30px;
+  width: 140px;
+  background: #FFF;
+  color: var(--blueink);
+  letter-spacing: 2px;
   text-transform: uppercase;
-  width: 120px;
   transition: 200ms all ease-in-out;
   border: var(--wireframe);
   border-radius: var(--border-rd);
 }
 
-.btn:hover {
+button:hover {
   transition: 200ms all ease-in;
-  background: darkblue;
+  background: var(--blueink);
   color: #FFF;
 }
 
 /*
-
-    Postcard Component
-
-    Contains 
-
-    1. Postcard - Visual Interactive Component
-    2. Face - Front & Back Areas of Postcard Component
-        a. Front - File Uploaded Image + User Set Title
-        b. Back - User Memo Input Text Field
-    3. Effects - Click & Hover events correlate with the current postcard face
-
-
+    This button [ Finalize-Button ] will be appended to the back of
+    the postcard component module.
 */
-.card {
-  width: 100%;
-  height: 100%;
-  /* developer border */
-  border: var(--wireframe);
-  border-radius: 8px;
-}
-
-/*
-
-    Postcard Component
-
-    Contains 
-
-    1. Postcard - Visual Interactive Component
-    2. Face - Front & Back Areas of Postcard Component
-        a. Front - File Uploaded Image + User Set Title
-        b. Back - User Memo Input Text Field
-    3. Effects - Click & Hover events correlate with the current postcard face
-
-
-*/
-.postcard {
-  position: relative;
-  height: 225px;
-  width: 575px;
-  transform-style: preserve-3d;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-position: center;
-  background-size: cover;
-  border: var(--wireframe);
-  border-radius: 8px;
-  padding: 1rem;
-}
-.postcard .btn {
-  margin-top: 0;
-}
-
-.postcard .face {
+.back button {
   position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* mozilla & edge browser support */
-  -moz-backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  color: #FFF;
-  transition: 1s ease-in-out;
-  transform: perspective(300px) rotateY(0deg);
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-  border-radius: 8px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.postcard .face.front {
-  background: #000;
-  transform-style: preserve-3d;
-  background-position: center;
-  background-size: cover;
+/*
+    File Upload Module
+
+    Contains an input element [ upload-image ] and a button
+    element [ image-button ]
+
+*/
+#upload-image {
+  display: none;
 }
 
-.postcard .face.back {
-  background: #3bc2ff;
-  transform: perspective(770px) rotateY(180deg);
-  transform-style: preserve-3d;
-}
-
-/* .postcard:hover .face.front {
-transform: perspective(500px) rotateY(180deg);
-}
-
-.postcard:hover .face.back {
-transform: perspective(500px) rotateY(360deg);
-} */
-.postcard .face h1 {
-  font-size: 2em;
-  text-transform: uppercase;
-  transform: perspective(770px) translateZ(50px);
-}
-
+/* remove the input file from view */
 #image-upload {
   display: flex;
   justify-content: center;
@@ -305,24 +426,84 @@ input[type=file] {
   background: red;
 }
 
-#image-preview {
-  height: 425px;
+.helper {
+  height: 100%;
   width: 100%;
-  background-position: center;
-  background-size: cover;
-  border-radius: 8px;
-  border: var(--wireframe);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  color: var(--blueink);
+  color: #000;
+  font-size: 1rem;
+  border: var(--component);
+  border-radius: var(--border-rd);
+}
+
+/* title placement data variables */
+.placement-tl {
+  /* position placement [ top-left ] */
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  /* developer border */
+  border: var(--component);
+}
+
+.placement-tr {
+  /* position placement [ top-right ] */
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  /* developer border */
+  border: var(--component);
+}
+
+.placement-bl {
+  /* position placement [ bottom-left ] */
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  /* developer border */
+  border: var(--component);
+}
+
+.placement-br {
+  /* position placement [ bottom-right ] */
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  /* developer border */
+  border: var(--component);
 }
 
 @media screen and (orientation: portrait) {
-  .upload {
+  .orientation {
+    display: block;
+    border: var(--wireframe);
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    text-align: left;
+    color: #000;
+    font-weight: normal;
+  }
+  .orientation .title {
+    font-size: 1rem;
+    text-decoration: underline;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-weight: bold;
+  }
+
+  .postcard {
+    display: none;
+  }
+
+  .buttons {
     display: none;
   }
 
   /* remove the [ nofile ] helper element */
-  .nofile {
-    display: none;
-  }
 }
 /* 
     Once the user is informed to use the landscape orientation on mobile,
@@ -333,43 +514,6 @@ input[type=file] {
   /* remove the [ orientation ] helper from view */
   .orientation {
     display: none;
-  }
-
-  /* forms */
-  #title-form {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    height: 100%;
-    width: 100%;
-    max-width: 400px;
-    padding: 2rem;
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.9);
-    border: var(--wireframe);
-  }
-
-  #title-form input {
-    height: 45px;
-    border-radius: var(--rad-curved);
-    border: var(--wireframe);
-    width: 100%;
-    text-align: center;
-  }
-
-  #title-form button {
-    margin-top: 1rem;
-    font-size: 1.25rem;
-    padding: 0.25rem;
-    width: 100%;
-    max-width: 120px;
-    border: var(--wireframe);
-    border-radius: var(--rad-curved);
   }
 
   /* module [ overlay ] */
