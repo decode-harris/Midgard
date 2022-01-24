@@ -51,8 +51,6 @@ const messageButton = document.querySelector('#message-button');
 const confirmationButton = document.querySelector('#confirmation-button');
 const finalizeButton = document.querySelector('#finalize-button');
 const previewButton = document.querySelector('#preview-button');
-const completeButton = document.querySelector('#complete-button');
-
 
 // select the form [ Form Module : Title ]
 const titleForm = document.querySelector('#title-form');

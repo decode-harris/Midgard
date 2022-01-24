@@ -1,7 +1,7 @@
 
 
 // set the user title as an empty string
-let userTitle = '';
+// let userTitle = '';
 
 /*
     Editing Component : Interactive Overlay Module
@@ -18,6 +18,8 @@ let userTitle = '';
         to the panels.
 
 */
+
+// const placementButton = document.querySelector('#placement-button');
 
 // select the overlay HTML element module
 let overlay = document.querySelector('.overlay');
@@ -67,23 +69,30 @@ for(let i = 0; i < panels.length; i++) {
 
         // set a timeout of 700ms ( milli-seconds )
         setTimeout(() => {
-            // for displaying the [ placement-button ] 
-            placementButton.style.display = 'block';
+            for ( let i = 0; i < buttons.length; i++ ) {
+                // remove all navigation buttons from application view
+                buttons[i].style.display = 'none';
+        
+                // display the next application state button [ Placement( Confirm ) Button ]
+                buttons[4].style.display = 'block';
+            }
         }, 700);
     
     });
     
 }
 
-
 /*
     Overlay Data Array
         Provides the HTML overlay elements with data for assigning &
         re-arranging style values.
-
 */
 overlayDataArray = [
-    
+    /*
+        Data Array Grid Objects
+            Contains an ID, section area & grid placement
+            class name
+    */
     {
         id : 'pnl-tl',
         section : 'top left',
@@ -106,7 +115,6 @@ overlayDataArray = [
     },
 ];
 
-
 /*
     Placement Component : Title Placement Property Module
         A user can select an area on the front of the card to where they would
@@ -126,41 +134,66 @@ overlayDataArray = [
 // set an [ active-panel ] data variable to an empty string
 let activePanel = '';
 
-// click event [ placementButton ]
+
+/*
+    Application State : [ Overlay Module : Placement ]
+
+        Event : Iterate through all navigation button elements, 
+                and remove them from application view.
+
+                Confirm the title-placement data & assign
+                to the postcard component preview element.
+
+                On click, remove the overlay from application view.
+
+                Also display the next application state button
+                in the iteration [ Animate Postcard ( faceback ) ]
+
+        State-Transition : From [ Overlay Module : Placement ( Confirm ) ==> Animate Postcard ( faceback ) ]
+*/
 placementButton.addEventListener('click', ()=> {
 
     // validate if the placement button has already been clicked
-    if (placementButton.innerHTML != 'replace title') {
+    // if (placementButton.innerHTML != 'replace title') {
 
-        // if so, change the innerHTML to coencide with the correct name
-        placementButton.innerHTML = 'replace title';
+    //     // if so, change the innerHTML to coencide with the correct name
+    //     placementButton.innerHTML = 'replace title';
 
-        // validate if the overlay is display as a grid component
-        if (overlay.style.display != 'grid') {
-            // if not, style the overlay with display grid
-            overlay.style.display = 'grid';
-        }
-    }
-    else {
-        // revert the button back to place title
-        placementButton.innerHTML = 'place title';
-    }
+    //     // validate if the overlay is display as a grid component
+    //     if (overlay.style.display != 'grid') {
+    //         // if not, style the overlay with display grid
+    //         overlay.style.display = 'grid';
+    //     }
+    // }
+    // else {
+    //     // revert the button back to place title
+    //     placementButton.innerHTML = 'place title';
+    // }
     // test data pass-through
     console.log(activePanel);
+
+    for ( let i = 0; i < buttons.length; i++ ) {
+        // remove all navigation buttons from application view
+        buttons[i].style.display = 'none';
+
+        // display the next application state button [ Animate Postcard ]
+        buttons[5].style.display = 'block';
+    }
 
     // iterate through the [ overlayDataArray ] array
     for (let i = 0; i < overlayDataArray.length; i++) {
 
-        // set the user placement as the current chosen panel placement
+        // set the user selected panel as the current userPlacement
         let userPlacement = overlayDataArray[i].placement;
 
         // validate if the active panel is equal to the data id
         if ( activePanel == overlayDataArray[i].id ) {
 
+            // test the placement data of the user selection
             console.log('testing: ' + overlayDataArray[i].placement);
 
             // select the title placement element
-            let titlePlacement = document.querySelector('#title-placement');
+            let titlePlacement = document.querySelector('.title-placement');
             // display the title element
             titlePlacement.style.display = 'flex';
             // assign the position class via the userplacement data variable
@@ -170,12 +203,19 @@ placementButton.addEventListener('click', ()=> {
             let cardTitle = document.querySelector('.photo-title');
             // assign the card title inner html to user title data value
             cardTitle.innerHTML = userTitle;
+            // cardTitle.className = userPlacement;
 
             // test data array 
             console.log('active panel id == ' + overlayDataArray[i].section);
 
             // remove the overlay from view
             overlay.style.display = 'none';
+
+            // display the memo form element
+            memo.style.display = 'block';
+
+            // set focus to the textarea element
+            memo.focus();
         }
     }
 });

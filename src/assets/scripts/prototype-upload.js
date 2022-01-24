@@ -38,9 +38,6 @@ const upload_image = document.querySelector('#upload-image');
 // set an empty variable for the uploaded image source
 let uploadedImage = '';
 
-// select the nofile HTML helper element
-// let nofile = document.querySelector('#nofile');
-
 // attach an change event listener to the [ upload-image ] input element
 upload_image.addEventListener('change', function() {
 
@@ -55,55 +52,13 @@ upload_image.addEventListener('change', function() {
         // assign the reader results to the uploaded image variable
         uploadedImage = reader.result;
 
-        /*
-            apply the results data [ reader result ] to the uploading
-            container postcard element as a background image
-        */
-        uploading.querySelector('.front').style.backgroundImage = `url(${ uploadedImage })`;
-
-        /*
-            apply the results data [ reader result ] to the heading
-            container postcard element as a background image
-        */
-        heading.querySelector('.front').style.backgroundImage = `url(${ uploadedImage })`;
-
-        /*
-            apply the results data [ reader result ] to the placement
-            container postcard face (front) element as a background image
-        */
-       placement.querySelector('.front').style.backgroundImage = `url(${ uploadedImage })`;
-
-        /*
-            apply the results data [ reader result ] to the preview
-            container postcard face (front) element as a background image
-        */
-        preview.querySelector('.front').style.backgroundImage = `url(${ uploadedImage })`;
+        // apply the uploaded background image to the facefront of the postcard
+        facefront.style.backgroundImage = `url(${ uploadedImage })`;
     
     });
 
     // obtain the data as an data URL value for the uploaded file
     reader.readAsDataURL(this.files[0]);
-
-    // // select the loader HTML element
-    // let loader = document.querySelector('#loader');
-
-    // // display the icon briefly while upload is in progress
-    // loader.style.display = 'flex';
-    
-    // // remove the text from the nofile element
-    // nofile.innerHTML = ''
-
-    // // attach the loader to the nofile container element
-    // nofile.appendChild(loader);
-    
-    // // set a timeout after the image has been uploaded
-    // setTimeout(() => {
-
-    //     // that will remove the [ nofile ] helper overlay from the postcard component
-    //     nofile.style.height = '0%';
-        
-    // }, 200 /* 1.2 second timeout between image upload & button appearing */);
-
 });
 
 // select the [ image-button ]
@@ -112,25 +67,28 @@ const imageButton = document.querySelector('#image-button');
 // add a click event to the [ upload-button ]
 imageButton.addEventListener('click', ()=> {
 
-    // select the current postcard component inside the uploading container
-    let currentPostcard = document.querySelector('#uploading .postcard');
+    // validate if a photo image has been uploaded to the front of the postcard component
+    if (facefront.style.backgroundImage != '' || facefront.style.backgroundImage != null) {
 
-    // validate if a photo image has been uploaded
-    if (currentPostcard.style.backgroundImage != '' || currentPostcard.style.backgroundImage != null) {
+        // iterate through all navigation button elements
+        for ( let i = 0; i < buttons.length; i++ ) {
+            // remove all navigation buttons from application view
+            buttons[i].style.display = 'none';
+    
+            // display the next application state button [ Form Module : Title ]
+            buttons[2].style.display = 'block';
+        }
+
+        // select the application helper element
+        let helper = document.querySelector('.helper');
+
+        // remove the helper element from application view
+        helper.style.display = 'none';
 
         // set a 1 ( one ) second time-out
         setTimeout(() => {
             // on the inner HTML of the image button element
             imageButton.innerHTML = 're-upload';
-
-            // select the button container from the [ uploading ] container element
-            let buttonContainer = uploading.querySelector('.buttons');
-            buttonContainer.style.flexDirection = 'row-reverse';
-            // append the [ image-button ] to the button container
-            buttonContainer.appendChild(imageButton);
-
-            // also display the confirm button to navigation to the next application state
-            uploadButton.style.display = 'block';
         }, 1000);
     
     }
@@ -139,18 +97,6 @@ imageButton.addEventListener('click', ()=> {
         imageButton.innerHTML = 'upload';
     }
     
-    // // validate if the nofile is visible
-    // if (nofile.style.height != '100%') {
-    //     nofile.style.height = '100%'; // re-vert element height back to default
-    // }
-
-    // // validate if the overlay is visible
-    // if (overlay.style.display == 'grid') {
-
-    //     // than remove the overlay from view
-    //     overlay.style.display == 'none';
-    // }
-    
     // assign this event to trigger the input element
     document.querySelector('input[type="file"]').click();
 
@@ -158,15 +104,3 @@ imageButton.addEventListener('click', ()=> {
     console.log('Event : Upload Button');
 
 });
-
-
-// function [ displayOverlayElements ] : enable visual editing element
-displayOverlayElements = () => {
-
-    // apply display : grid to the [ overlay ] element
-    overlay.style.display = 'grid';
-
-    // test overlay function
-    console.log('Overlay Displayed'); 
-
-}
