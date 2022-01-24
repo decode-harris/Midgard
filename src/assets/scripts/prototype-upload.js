@@ -29,7 +29,6 @@
 
         Set a timeout at the end of the function to remove all un-necessary /
         un-used elements.
-
 */
 
 // select the image upload HTML form element
